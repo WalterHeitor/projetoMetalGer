@@ -43,16 +43,16 @@ public class Pessoa implements Serializable  {
     private String nome;
     @Column
     private int tipo;
-    //enderecos
+ //enderecos
     @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Enderecos.class, mappedBy = "pessoa")
     private Set<Enderecos> enderecos;
-    //telefone
+ //telefone
     @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Telefone.class, mappedBy = "pessoa")
     private Set<Telefone> telefone;
-    //emprestimoferramenta
+ //emprestimoferramenta
     @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = EmprestimoFerramenta.class, mappedBy = "pessoa")
     private Set<EmprestimoFerramenta> emprestimo_ferramenta;
- //   dependentes
+// dependentes
     @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Dependentes.class, mappedBy = "pessoa")
     private Set<Dependentes> dependentes;
  // Projetos
@@ -61,6 +61,9 @@ public class Pessoa implements Serializable  {
  //PedidoCompra
     @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = PedidoCompra.class, mappedBy = "pessoa")
     private Set<PedidoCompra> pedidoCompras ;
+ //MaoObraOrdemServiço
+    @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = MaoObraOrdemServico.class, mappedBy = "pessoa")
+    private Set<MaoObraOrdemServico> maoObraOrdemServicos ;
     
     public int getId_pessoa() {
         return id_pessoa;
@@ -118,6 +121,13 @@ public class Pessoa implements Serializable  {
            this.dependentes = new HashSet<Dependentes>();
         }
         this.dependentes.add(dp);
+    }
+   
+   public void addMaoObraOrdemServico(MaoObraOrdemServico servico){
+        if(this.maoObraOrdemServicos == null){
+           this.maoObraOrdemServicos = new HashSet<MaoObraOrdemServico>();
+        }
+        this.maoObraOrdemServicos.add(servico);
     }
     
 }

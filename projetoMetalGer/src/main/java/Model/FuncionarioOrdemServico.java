@@ -6,7 +6,6 @@
 package Model;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -46,49 +45,22 @@ public class FuncionarioOrdemServico implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="dt_prevista")
     private Date dt_prevista;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="dt_fim")
-    private Date dt_fim;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="dt_inicio")
-    private Date dt_inicio;
-   
-    
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Pessoa.class)
-    @JoinColumn(name = "id_pessoa", nullable = true)
-    private Pessoa pessoa;
-    
+//relaçoes
+ //ordem de serviço
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = OrdemServico.class)
     @JoinColumn(name = "id_ordem_servico", nullable = true)
     private OrdemServico ordem_servico;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Insumo.class)
-    @JoinColumn(name = "id_insumo", nullable = true)
-    private Insumo insumo;
+    
 
     public FuncionarioOrdemServico() {
     }
 
-    public FuncionarioOrdemServico(String descricao, String status_servico, Date dt_prevista, Date dt_fim, Date dt_inicio, Pessoa pessoa, OrdemServico ordem_servico) {
+    public FuncionarioOrdemServico(String descricao, String status_servico, Date dt_prevista, OrdemServico ordem_servico) {
         this.descricao = descricao;
         this.status_servico = status_servico;
         this.dt_prevista = dt_prevista;
-        this.dt_fim = dt_fim;
-        this.dt_inicio = dt_inicio;
-        this.pessoa = pessoa;
         this.ordem_servico = ordem_servico;
-    }
-
-    public FuncionarioOrdemServico(String descricao, String status_servico, Date dt_prevista, Date dt_fim, Date dt_inicio, Pessoa pessoa, OrdemServico ordem_servico, Insumo insumo) {
-        this.descricao = descricao;
-        this.status_servico = status_servico;
-        this.dt_prevista = dt_prevista;
-        this.dt_fim = dt_fim;
-        this.dt_inicio = dt_inicio;
-        this.pessoa = pessoa;
-        this.ordem_servico = ordem_servico;
-        this.insumo = insumo;
     }
 
     public Long getId_funcionario_ordem_servico() {
@@ -107,7 +79,7 @@ public class FuncionarioOrdemServico implements Serializable {
         this.descricao = descricao;
     }
 
-    public String isStatus_servico() {
+    public String getStatus_servico() {
         return status_servico;
     }
 
@@ -123,30 +95,6 @@ public class FuncionarioOrdemServico implements Serializable {
         this.dt_prevista = dt_prevista;
     }
 
-    public Date getDt_fim() {
-        return dt_fim;
-    }
-
-    public void setDt_fim(Date dt_fim) {
-        this.dt_fim = dt_fim;
-    }
-
-    public Date getDt_inicio() {
-        return dt_inicio;
-    }
-
-    public void setDt_inicio(Date dt_inicio) {
-        this.dt_inicio = dt_inicio;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
     public OrdemServico getOrdem_servico() {
         return ordem_servico;
     }
@@ -154,19 +102,6 @@ public class FuncionarioOrdemServico implements Serializable {
     public void setOrdem_servico(OrdemServico ordem_servico) {
         this.ordem_servico = ordem_servico;
     }
-
-    public Insumo getInsumo() {
-        return insumo;
-    }
-
-    public void setInsumo(Insumo insumo) {
-        this.insumo = insumo;
-    }
- 
-    
-    
-    
-
-    
+   
 }
 

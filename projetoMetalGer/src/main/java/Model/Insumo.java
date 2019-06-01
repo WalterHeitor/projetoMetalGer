@@ -44,8 +44,13 @@ public class Insumo implements Serializable {
     private int unidade;
    
  //relaçoes
+ //PedidoCompraInsumo
     @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = PedidoCompraInsumo.class, mappedBy = "insumo")
-    private Set<PedidoCompraInsumo> compraInsumos ;
+    private Set<PedidoCompraInsumo> compraInsumos;
+    
+ //MaoObraOrdemServico
+    @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = MaoObraOrdemServico.class, mappedBy = "insumo")
+    private Set<MaoObraOrdemServico> maoObraOrdemServicos;
     
  //construtores
 
@@ -107,5 +112,10 @@ public class Insumo implements Serializable {
         this.compraInsumos.add(compraInsumo);
     }
     
-    
+    public void addMaoObraOrdemServico(MaoObraOrdemServico servico){
+        if(this.maoObraOrdemServicos == null){
+            this.maoObraOrdemServicos = new HashSet<MaoObraOrdemServico>();
+        }
+        this.maoObraOrdemServicos.add(servico);
+    }
 }
