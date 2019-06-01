@@ -42,7 +42,7 @@ public class FuncionarioOrdemServico implements Serializable {
     @Column
     private String descricao;
     @Column
-    private boolean status_servico;
+    private String status_servico;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="dt_prevista")
     private Date dt_prevista;
@@ -70,7 +70,7 @@ public class FuncionarioOrdemServico implements Serializable {
     public FuncionarioOrdemServico() {
     }
 
-    public FuncionarioOrdemServico(String descricao, boolean status_servico, Date dt_prevista, Date dt_fim, Date dt_inicio, Pessoa pessoa, OrdemServico ordem_servico) {
+    public FuncionarioOrdemServico(String descricao, String status_servico, Date dt_prevista, Date dt_fim, Date dt_inicio, Pessoa pessoa, OrdemServico ordem_servico) {
         this.descricao = descricao;
         this.status_servico = status_servico;
         this.dt_prevista = dt_prevista;
@@ -80,7 +80,7 @@ public class FuncionarioOrdemServico implements Serializable {
         this.ordem_servico = ordem_servico;
     }
 
-    public FuncionarioOrdemServico(String descricao, boolean status_servico, Date dt_prevista, Date dt_fim, Date dt_inicio, Pessoa pessoa, OrdemServico ordem_servico, Insumo insumo) {
+    public FuncionarioOrdemServico(String descricao, String status_servico, Date dt_prevista, Date dt_fim, Date dt_inicio, Pessoa pessoa, OrdemServico ordem_servico, Insumo insumo) {
         this.descricao = descricao;
         this.status_servico = status_servico;
         this.dt_prevista = dt_prevista;
@@ -107,11 +107,11 @@ public class FuncionarioOrdemServico implements Serializable {
         this.descricao = descricao;
     }
 
-    public boolean isStatus_servico() {
+    public String isStatus_servico() {
         return status_servico;
     }
 
-    public void setStatus_servico(boolean status_servico) {
+    public void setStatus_servico(String status_servico) {
         this.status_servico = status_servico;
     }
 
