@@ -59,6 +59,10 @@ public class MaoObraOrdemServico {
     @JoinColumn(name = "id_insumo", nullable = true)
     private Insumo insumo;
     
+//funcionario ordem serviço
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = FuncionarioOrdemServico.class)
+    @JoinColumn(name = "id_funcionario_ordem_servico", nullable = true)
+    private FuncionarioOrdemServico funcionarioOrdemServico;
 //contrutores
 
     public MaoObraOrdemServico() {
@@ -72,6 +76,29 @@ public class MaoObraOrdemServico {
         this.pessoa = pessoa;
         this.insumo = insumo;
     }
+
+    public MaoObraOrdemServico(String descricaoOperacao, Date dt_fim, Date dt_inicio, float qtd_insumo, Pessoa pessoa, FuncionarioOrdemServico funcionarioOrdemServico) {
+        this.descricaoOperacao = descricaoOperacao;
+        this.dt_fim = dt_fim;
+        this.dt_inicio = dt_inicio;
+        this.qtd_insumo = qtd_insumo;
+        this.pessoa = pessoa;
+        this.funcionarioOrdemServico = funcionarioOrdemServico;
+    }
+    
+    
+
+    public MaoObraOrdemServico(String descricaoOperacao, Date dt_fim, Date dt_inicio, float qtd_insumo, Pessoa pessoa, Insumo insumo, FuncionarioOrdemServico funcionarioOrdemServico) {
+        this.descricaoOperacao = descricaoOperacao;
+        this.dt_fim = dt_fim;
+        this.dt_inicio = dt_inicio;
+        this.qtd_insumo = qtd_insumo;
+        this.pessoa = pessoa;
+        this.insumo = insumo;
+        this.funcionarioOrdemServico = funcionarioOrdemServico;
+    }
+    
+    
 
     public Long getId_mao_obra() {
         return id_mao_obra;

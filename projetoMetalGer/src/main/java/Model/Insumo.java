@@ -68,9 +68,18 @@ public class Insumo implements Serializable {
         this.descricao_produto = descricao_produto;
         this.cod_insumo = cod_insumo;
         this.unidade = unidade;
-
         this.compraInsumos = compraInsumos;
     }
+
+    public Insumo(String descricao_produto, int cod_insumo, int unidade, Set<PedidoCompraInsumo> compraInsumos, Set<MaoObraOrdemServico> maoObraOrdemServicos) {
+        this.descricao_produto = descricao_produto;
+        this.cod_insumo = cod_insumo;
+        this.unidade = unidade;
+        this.compraInsumos = compraInsumos;
+        this.maoObraOrdemServicos = maoObraOrdemServicos;
+    }
+    
+    
     
 
     public int getId_insumo() {
@@ -104,6 +113,8 @@ public class Insumo implements Serializable {
     public void setCod_insumo(int cod_insumo) {
         this.cod_insumo = cod_insumo;
     }
+    
+    
 
     public void addPedidoCompraInsumo(PedidoCompraInsumo compraInsumo){
         if(this.compraInsumos == null){

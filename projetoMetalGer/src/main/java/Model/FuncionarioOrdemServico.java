@@ -7,6 +7,8 @@ package Model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,7 +53,9 @@ public class FuncionarioOrdemServico implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = OrdemServico.class)
     @JoinColumn(name = "id_ordem_servico", nullable = true)
     private OrdemServico ordem_servico;
-    
+ //mao de obra
+    @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = MaoObraOrdemServico.class, mappedBy = "funcionarioOrdemServico")
+    private Set<MaoObraOrdemServico> maoObraOrdemServicos;
     
 
     public FuncionarioOrdemServico() {
@@ -62,45 +67,23 @@ public class FuncionarioOrdemServico implements Serializable {
         this.dt_prevista = dt_prevista;
         this.ordem_servico = ordem_servico;
     }
-
-    public Long getId_funcionario_ordem_servico() {
-        return id_funcionario_ordem_servico;
-    }
-
-    public void setId_funcionario_ordem_servico(Long id_funcionario_ordem_servico) {
-        this.id_funcionario_ordem_servico = id_funcionario_ordem_servico;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
+    
+    public FuncionarioOrdemServico(String descricao, String status_servico, Date dt_prevista, OrdemServico ordem_servico, Set<MaoObraOrdemServico> maoObraOrdemServicos) {
         this.descricao = descricao;
-    }
-
-    public String getStatus_servico() {
-        return status_servico;
-    }
-
-    public void setStatus_servico(String status_servico) {
         this.status_servico = status_servico;
-    }
-
-    public Date getDt_prevista() {
-        return dt_prevista;
-    }
-
-    public void setDt_prevista(Date dt_prevista) {
         this.dt_prevista = dt_prevista;
-    }
-
-    public OrdemServico getOrdem_servico() {
-        return ordem_servico;
-    }
-
-    public void setOrdem_servico(OrdemServico ordem_servico) {
         this.ordem_servico = ordem_servico;
+        this.maoObraOrdemServicos = maoObraOrdemServicos;
+    }
+
+    
+    
+    
+    public void addMaoObraOrdemServico(MaoObraOrdemServico servico){
+        if(this.maoObraOrdemServicos == null){
+           this.maoObraOrdemServicos = new HashSet<MaoObraOrdemServico>();
+        }
+        this.maoObraOrdemServicos.add(servico);
     }
    
 }
