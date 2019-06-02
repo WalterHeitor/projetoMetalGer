@@ -39,9 +39,6 @@ public class TesteInsercaoTable {
       InsumoDAO.getInstance().persist(i);
       System.out.println("----Insumo inserido com sucesso----");
         System.out.println("----------------teste realizado com sucesso------------------");
-        Date dt = new Date();
-        dt.getTime();
-        System.out.println("a hora e :"+dt);
     }
     
     

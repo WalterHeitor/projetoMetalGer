@@ -11,8 +11,6 @@ import Model.Funcionario;
 import Model.FuncionarioOrdemServico;
 import Model.MaoObraOrdemServico;
 import Model.OrdemServico;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *
@@ -332,10 +330,6 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         f = FuncionarioDAO.getInstance().getById(Integer.parseInt(textIdFunc.getText().trim()));
-        moos = new MaoObraOrdemServico(textDescricaoMaoObra.getText().trim(), textDtFim.getDate(),
-                textDtFim.getDate() ,
-                new SimpleDateFormat("HH:mm:ss").format(new Date().getTime(textHrInicio.getText())),
-                textHrFim.getFormatter(new SimpleDateFormat("HH:mm:ss").format(new Date().getTime())), f, fos);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
