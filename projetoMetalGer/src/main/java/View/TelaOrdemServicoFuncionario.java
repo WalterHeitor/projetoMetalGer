@@ -5,6 +5,15 @@
  */
 package View;
 
+import Controller.FuncionarioDAO;
+import Controller.OrdemServicoDAO;
+import Model.Funcionario;
+import Model.FuncionarioOrdemServico;
+import Model.MaoObraOrdemServico;
+import Model.OrdemServico;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author walter heitor
@@ -17,6 +26,10 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
     public TelaOrdemServicoFuncionario() {
         initComponents();
     }
+    OrdemServico os = new OrdemServico();
+    Funcionario f = new Funcionario();
+    FuncionarioOrdemServico fos = new FuncionarioOrdemServico();
+    MaoObraOrdemServico moos = new MaoObraOrdemServico();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,7 +86,12 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
 
         jLabel4.setText("Data Prevista:");
 
-        btnSalvarOSF.setText("Salvar");
+        btnSalvarOSF.setText("Salvar OS");
+        btnSalvarOSF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarOSFActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Mao de Obra"));
 
@@ -86,6 +104,11 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         jLabel8.setText("Indentificação do Funcionario:");
 
         jButton1.setText("Adicionar Funcionario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Hora de Inicio:");
 
@@ -299,6 +322,19 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarOSFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarOSFActionPerformed
+        // TODO add your handling code here:
+        os = OrdemServicoDAO.getInstance().getById(Long.parseLong(textOrdemServico.getText().trim()));
+        fos = new FuncionarioOrdemServico(textDescricaoServico.getText().trim(),textStatusOS.getSelectedItem().toString(),textDtPrevistaOSF.getDate(), os);
+    }//GEN-LAST:event_btnSalvarOSFActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        f = FuncionarioDAO.getInstance().getById(Integer.parseInt(textIdFunc.getText().trim()));
+        moos = new MaoObraOrdemServico(textDescricaoMaoObra.getText().trim(), textDtFim.getDate(),
+                textDtFim.getDate() , textHrInicio.getFormatter(new SimpleDateFormat("HH:mm:ss").format(new Date().getTime())), textHrFim.getFormatter(new SimpleDateFormat("HH:mm:ss").format(new Date().getTime())), f, fos);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

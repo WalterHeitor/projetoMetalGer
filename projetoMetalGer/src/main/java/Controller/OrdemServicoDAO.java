@@ -44,7 +44,7 @@ public class OrdemServicoDAO {
         
     }
          
-    public OrdemServico getById(final int id) {
+    public OrdemServico getById(final Long id) {
         return entityManager.find(OrdemServico.class, id);
     }
 
@@ -90,7 +90,7 @@ public class OrdemServicoDAO {
             }
     }
   
-    public void removeById(final int id) {
+    public void removeById(final long id) {
         try {
             OrdemServico ordemServico = getById(id);
             remove(ordemServico);
