@@ -369,6 +369,7 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         i = InsumoDAO.getInstance().getById(Integer.parseInt(textIdInsumo.getText().trim()));
         i.addMaoObraOrdemServico(moos);
+        moos.setInsumo(i);
         moos.setQtd_insumo(Float.parseFloat(textQtdUtilizada.getText().trim()));
     }//GEN-LAST:event_btnAddInsumoActionPerformed
 
