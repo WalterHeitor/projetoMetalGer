@@ -333,7 +333,9 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         f = FuncionarioDAO.getInstance().getById(Integer.parseInt(textIdFunc.getText().trim()));
         moos = new MaoObraOrdemServico(textDescricaoMaoObra.getText().trim(), textDtFim.getDate(),
-                textDtFim.getDate() , textHrInicio.getFormatter(new SimpleDateFormat("HH:mm:ss").format(new Date().getTime())), textHrFim.getFormatter(new SimpleDateFormat("HH:mm:ss").format(new Date().getTime())), f, fos);
+                textDtFim.getDate() ,
+                new SimpleDateFormat("HH:mm:ss").format(new Date().getTime(textHrInicio.getText())),
+                textHrFim.getFormatter(new SimpleDateFormat("HH:mm:ss").format(new Date().getTime())), f, fos);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
