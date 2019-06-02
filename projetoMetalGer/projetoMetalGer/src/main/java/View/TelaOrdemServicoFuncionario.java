@@ -362,7 +362,7 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        MaoObraOrdemServicoDAO.getInstance().persist(moos);
+        MaoObraOrdemServicoDAO.getInstance().merge(moos);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnAddInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddInsumoActionPerformed
