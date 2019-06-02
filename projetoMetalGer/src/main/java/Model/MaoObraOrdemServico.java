@@ -40,12 +40,18 @@ public class MaoObraOrdemServico {
     private Long id_mao_obra;
     @Column
     private String descricaoOperacao;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="dt_fim")
-    private Date dt_fim;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name="dt_inicio")
     private Date dt_inicio;
+    @Temporal(TemporalType.DATE)
+    @Column(name="dt_fim")
+    private Date dt_fim;  
+    @Temporal(TemporalType.TIME)
+    @Column
+    private Date Hr_inicio;
+    @Temporal(TemporalType.TIME)
+    @Column
+    private Date Hr_fim;
     @Column
     private float qtd_insumo;
  
@@ -68,38 +74,22 @@ public class MaoObraOrdemServico {
     public MaoObraOrdemServico() {
     }
 
-    public MaoObraOrdemServico(String descricaoOperacao, Date dt_fim, Date dt_inicio, float qtd_insumo, Pessoa pessoa, Insumo insumo) {
+    public MaoObraOrdemServico(String descricaoOperacao, Date dt_fim, Date dt_inicio, Date Hr_inicio, Date Hr_fim,  Pessoa pessoa, FuncionarioOrdemServico funcionarioOrdemServico) {
         this.descricaoOperacao = descricaoOperacao;
         this.dt_fim = dt_fim;
         this.dt_inicio = dt_inicio;
-        this.qtd_insumo = qtd_insumo;
-        this.pessoa = pessoa;
-        this.insumo = insumo;
-    }
-
-    public MaoObraOrdemServico(String descricaoOperacao, Date dt_fim, Date dt_inicio, float qtd_insumo, Pessoa pessoa, FuncionarioOrdemServico funcionarioOrdemServico) {
-        this.descricaoOperacao = descricaoOperacao;
-        this.dt_fim = dt_fim;
-        this.dt_inicio = dt_inicio;
-        this.qtd_insumo = qtd_insumo;
+        this.Hr_inicio = Hr_inicio;
+        this.Hr_fim = Hr_fim;
         this.pessoa = pessoa;
         this.funcionarioOrdemServico = funcionarioOrdemServico;
     }
-    
-    
 
-    public MaoObraOrdemServico(String descricaoOperacao, Date dt_fim, Date dt_inicio, float qtd_insumo, Pessoa pessoa, Insumo insumo, FuncionarioOrdemServico funcionarioOrdemServico) {
-        this.descricaoOperacao = descricaoOperacao;
-        this.dt_fim = dt_fim;
-        this.dt_inicio = dt_inicio;
+    public MaoObraOrdemServico(float qtd_insumo, Insumo insumo) {
         this.qtd_insumo = qtd_insumo;
-        this.pessoa = pessoa;
         this.insumo = insumo;
-        this.funcionarioOrdemServico = funcionarioOrdemServico;
     }
-    
-    
 
+//gets sets
     public Long getId_mao_obra() {
         return id_mao_obra;
     }
@@ -154,6 +144,30 @@ public class MaoObraOrdemServico {
 
     public void setInsumo(Insumo insumo) {
         this.insumo = insumo;
+    }
+
+    public Date getHr_inicio() {
+        return Hr_inicio;
+    }
+
+    public void setHr_inicio(Date Hr_inicio) {
+        this.Hr_inicio = Hr_inicio;
+    }
+
+    public Date getHr_fim() {
+        return Hr_fim;
+    }
+
+    public void setHr_fim(Date Hr_fim) {
+        this.Hr_fim = Hr_fim;
+    }
+
+    public FuncionarioOrdemServico getFuncionarioOrdemServico() {
+        return funcionarioOrdemServico;
+    }
+
+    public void setFuncionarioOrdemServico(FuncionarioOrdemServico funcionarioOrdemServico) {
+        this.funcionarioOrdemServico = funcionarioOrdemServico;
     }
     
     
