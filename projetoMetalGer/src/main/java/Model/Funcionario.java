@@ -108,7 +108,11 @@ public class Funcionario extends Pessoa implements Serializable{
     }
 //dados pessoais
 
-    public Funcionario(String pai_func, String mae_func, String cart_profissional_serie_func, String cart_reservista_func, String cart_resrvis_categoria_func, String titulo_eleitor_func, String cart_identidade_func, Date emissao_cart_identidade, String orgao_emissorcart_identidade_func, String cpf_func, String pis_func, Date dt_pis_func, String local_nasc_func, Date dt_nasc_func, String estado_civil_func, String grau_instrucao_func, String peso_func, String cabelo_func, String pele_func, String defeitos_func, String nome, int tipo) {
+    public Funcionario(String pai_func, String mae_func, String cart_profissional_serie_func, String cart_reservista_func, 
+            String cart_resrvis_categoria_func, String titulo_eleitor_func, String cart_identidade_func, Date emissao_cart_identidade, 
+            String orgao_emissorcart_identidade_func, String cpf_func, String pis_func, Date dt_pis_func, String local_nasc_func, 
+            Date dt_nasc_func, String estado_civil_func, String grau_instrucao_func, String peso_func, String cabelo_func, 
+            String pele_func, String defeitos_func, String nome, int tipo) {
         super(nome, tipo);
         this.pai_func = pai_func;
         this.mae_func = mae_func;
