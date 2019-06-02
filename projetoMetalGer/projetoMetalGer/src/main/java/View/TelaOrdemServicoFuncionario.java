@@ -6,9 +6,12 @@
 package View;
 
 import Controller.FuncionarioDAO;
+import Controller.InsumoDAO;
+import Controller.MaoObraOrdemServicoDAO;
 import Controller.OrdemServicoDAO;
 import Model.Funcionario;
 import Model.FuncionarioOrdemServico;
+import Model.Insumo;
 import Model.MaoObraOrdemServico;
 import Model.OrdemServico;
 
@@ -26,6 +29,7 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
     }
     OrdemServico os = new OrdemServico();
     Funcionario f = new Funcionario();
+    Insumo i = new Insumo();
     FuncionarioOrdemServico fos = new FuncionarioOrdemServico();
     MaoObraOrdemServico moos = new MaoObraOrdemServico();
 
@@ -57,11 +61,13 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         textDtFim = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         textIdFunc = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnAddFuncionario = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         textHrInicio = new javax.swing.JFormattedTextField();
         textHrFim = new javax.swing.JFormattedTextField();
+        jLabel13 = new javax.swing.JLabel();
+        textHrTrab = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         textIdInsumo = new javax.swing.JTextField();
@@ -101,10 +107,10 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
 
         jLabel8.setText("Indentificação do Funcionario:");
 
-        jButton1.setText("Adicionar Funcionario");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddFuncionario.setText("Adicionar Funcionario");
+        btnAddFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddFuncionarioActionPerformed(evt);
             }
         });
 
@@ -124,6 +130,8 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel13.setText("Qtd horas Trab.:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -133,7 +141,7 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(btnAddFuncionario))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -165,7 +173,11 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textIdFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(textIdFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textHrTrab, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -178,9 +190,9 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
                     .addComponent(textDescricaoMaoObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel7))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel6))
                     .addComponent(textDtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textDtFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
@@ -192,9 +204,11 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(textIdFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textIdFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(textHrTrab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnAddFuncionario)
                 .addGap(26, 26, 26))
         );
 
@@ -205,6 +219,11 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         jLabel10.setText("Qtd utilizada:");
 
         btnAddInsumo.setText("Adicionar Insumo");
+        btnAddInsumo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddInsumoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -239,6 +258,11 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         );
 
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -325,12 +349,28 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         os = OrdemServicoDAO.getInstance().getById(Long.parseLong(textOrdemServico.getText().trim()));
         fos = new FuncionarioOrdemServico(textDescricaoServico.getText().trim(),textStatusOS.getSelectedItem().toString(),textDtPrevistaOSF.getDate(), os);
+        fos.setOrdem_servico(os);
     }//GEN-LAST:event_btnSalvarOSFActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFuncionarioActionPerformed
         // TODO add your handling code here:
         f = FuncionarioDAO.getInstance().getById(Integer.parseInt(textIdFunc.getText().trim()));
-    }//GEN-LAST:event_jButton1ActionPerformed
+        moos = new MaoObraOrdemServico(textDescricaoMaoObra.getText().trim(), textDtFim.getDate(), textDtFim.getDate(),Float.parseFloat(textHrTrab.getText().trim()) , f, fos);
+        fos.addMaoObraOrdemServico(moos);
+        f.addMaoObraOrdemServico(moos);
+    }//GEN-LAST:event_btnAddFuncionarioActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        MaoObraOrdemServicoDAO.getInstance().persist(moos);
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnAddInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddInsumoActionPerformed
+        // TODO add your handling code here:
+        i = InsumoDAO.getInstance().getById(Integer.parseInt(textIdInsumo.getText().trim()));
+        i.addMaoObraOrdemServico(moos);
+        moos.setQtd_insumo(Float.parseFloat(textQtdUtilizada.getText().trim()));
+    }//GEN-LAST:event_btnAddInsumoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,14 +408,15 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddFuncionario;
     private javax.swing.JButton btnAddInsumo;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnSalvarOSF;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -394,6 +435,7 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser textDtPrevistaOSF;
     private javax.swing.JFormattedTextField textHrFim;
     private javax.swing.JFormattedTextField textHrInicio;
+    private javax.swing.JTextField textHrTrab;
     private javax.swing.JTextField textIdFunc;
     private javax.swing.JTextField textIdInsumo;
     private javax.swing.JTextField textOrdemServico;

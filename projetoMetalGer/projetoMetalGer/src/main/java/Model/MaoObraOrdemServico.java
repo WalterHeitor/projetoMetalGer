@@ -54,6 +54,8 @@ public class MaoObraOrdemServico {
     private Date Hr_fim;
     @Column
     private float qtd_insumo;
+    @Column
+    private float qtd_horas_trab;
  
  //pessoa
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Pessoa.class)
@@ -73,6 +75,16 @@ public class MaoObraOrdemServico {
 
     public MaoObraOrdemServico() {
     }
+
+    public MaoObraOrdemServico(String descricaoOperacao, Date dt_inicio, Date dt_fim, float qtd_horas_trab, Pessoa pessoa, FuncionarioOrdemServico funcionarioOrdemServico) {
+        this.descricaoOperacao = descricaoOperacao;
+        this.dt_inicio = dt_inicio;
+        this.dt_fim = dt_fim;
+        this.qtd_horas_trab = qtd_horas_trab;
+        this.pessoa = pessoa;
+        this.funcionarioOrdemServico = funcionarioOrdemServico;
+    }
+    
 
     public MaoObraOrdemServico(String descricaoOperacao, Date dt_fim, Date dt_inicio, Date Hr_inicio, Date Hr_fim,  Pessoa pessoa, FuncionarioOrdemServico funcionarioOrdemServico) {
         this.descricaoOperacao = descricaoOperacao;
@@ -161,6 +173,15 @@ public class MaoObraOrdemServico {
     public void setHr_fim(Date Hr_fim) {
         this.Hr_fim = Hr_fim;
     }
+
+    public float getQtd_horas_trab() {
+        return qtd_horas_trab;
+    }
+
+    public void setQtd_horas_trab(float qtd_horas_trab) {
+        this.qtd_horas_trab = qtd_horas_trab;
+    }
+    
 
     public FuncionarioOrdemServico getFuncionarioOrdemServico() {
         return funcionarioOrdemServico;

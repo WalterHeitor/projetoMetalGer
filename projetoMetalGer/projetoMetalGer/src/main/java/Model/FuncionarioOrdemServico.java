@@ -76,6 +76,46 @@ public class FuncionarioOrdemServico implements Serializable {
         this.maoObraOrdemServicos = maoObraOrdemServicos;
     }
 
+    public Long getId_funcionario_ordem_servico() {
+        return id_funcionario_ordem_servico;
+    }
+
+    public void setId_funcionario_ordem_servico(Long id_funcionario_ordem_servico) {
+        this.id_funcionario_ordem_servico = id_funcionario_ordem_servico;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getStatus_servico() {
+        return status_servico;
+    }
+
+    public void setStatus_servico(String status_servico) {
+        this.status_servico = status_servico;
+    }
+
+    public Date getDt_prevista() {
+        return dt_prevista;
+    }
+
+    public void setDt_prevista(Date dt_prevista) {
+        this.dt_prevista = dt_prevista;
+    }
+
+    public OrdemServico getOrdem_servico() {
+        return ordem_servico;
+    }
+
+    public void setOrdem_servico(OrdemServico ordem_servico) {
+        this.ordem_servico = ordem_servico;
+    }
+
     
     
     
