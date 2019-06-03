@@ -7,6 +7,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,10 +41,10 @@ public class EmprestimoFerramenta implements Serializable {
     private Long id_emprestimo_ferramenta;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="dt_saida_emp")
-    private Calendar dt_saida_emp;
+    private Date dt_saida_emp;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="dt_entrega")
-    private Calendar dt_entrega;
+    private Date dt_entrega;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Ferramenta.class)
     @JoinColumn(name = "id_ferramenta", nullable = true)
@@ -58,7 +59,7 @@ public class EmprestimoFerramenta implements Serializable {
     public EmprestimoFerramenta() {
     }
 
-    public EmprestimoFerramenta(Calendar dt_saida_emp, Calendar dt_entrega, Ferramenta ferramenta, Pessoa pessoa) {
+    public EmprestimoFerramenta(Date dt_saida_emp, Date dt_entrega, Ferramenta ferramenta, Pessoa pessoa) {
         this.dt_saida_emp = dt_saida_emp;
         this.dt_entrega = dt_entrega;
         this.ferramenta = ferramenta;
@@ -75,19 +76,19 @@ public class EmprestimoFerramenta implements Serializable {
         this.id_emprestimo_ferramenta = id_emprestimo_ferramenta;
     }
 
-    public Calendar getDt_saida_emp() {
+    public Date getDt_saida_emp() {
         return dt_saida_emp;
     }
 
-    public void setDt_saida_emp(Calendar dt_saida_emp) {
+    public void setDt_saida_emp(Date dt_saida_emp) {
         this.dt_saida_emp = dt_saida_emp;
     }
 
-    public Calendar getDt_entrega() {
+    public Date getDt_entrega() {
         return dt_entrega;
     }
 
-    public void setDt_entrega(Calendar dt_entrega) {
+    public void setDt_entrega(Date dt_entrega) {
         this.dt_entrega = dt_entrega;
     }
 
