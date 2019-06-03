@@ -63,6 +63,7 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
 
         textStatusOS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aquardando Aprovação", "Executando", "Finalizada", "Entregue", "Parada", "Atrazado", " " }));
 
+        btnCadastrarOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/save_32px.png"))); // NOI18N
         btnCadastrarOS.setText("Cadastrar");
         btnCadastrarOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +73,7 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
 
         jLabel6.setText("Indentificação deo Projeto:");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
         jButton1.setText("Listar Projetos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

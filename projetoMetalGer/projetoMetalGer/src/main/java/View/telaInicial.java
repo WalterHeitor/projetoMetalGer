@@ -82,7 +82,7 @@ public class telaInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu5.setText("jMenu5");
+        jMenu5.setText("Serviços");
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);

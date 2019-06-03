@@ -116,9 +116,9 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="92" max="32767" attributes="0"/>
+                  <EmptySpace pref="35" max="32767" attributes="0"/>
                   <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -169,6 +169,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSalvarOSF">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/META-INF/icos/save_32px.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Salvar OS"/>
           </Properties>
           <Events>
@@ -317,6 +320,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnAddFuncionario">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/META-INF/icos/plus_32px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Adicionar Funcionario"/>
               </Properties>
               <Events>
@@ -420,6 +426,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnAddInsumo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/META-INF/icos/plus_32px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Adicionar Insumo"/>
               </Properties>
               <Events>
@@ -430,6 +439,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnCadastrar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/META-INF/icos/save_32px.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
           <Events>

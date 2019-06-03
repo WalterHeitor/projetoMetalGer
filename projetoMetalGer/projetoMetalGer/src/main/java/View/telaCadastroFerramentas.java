@@ -106,6 +106,7 @@ public class telaCadastroFerramentas extends javax.swing.JFrame {
 
         jLabel9.setText("Local :");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/save_32px.png"))); // NOI18N
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +215,7 @@ public class telaCadastroFerramentas extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(965, 620));
