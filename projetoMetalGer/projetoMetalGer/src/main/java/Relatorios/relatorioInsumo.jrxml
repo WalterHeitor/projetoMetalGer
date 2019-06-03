@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioInsumo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="18bfa6c3-8368-4884-a70f-8a7deaf08ca4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select *from insumo]]>
+	</queryString>
+	<field name="id_insumo" class="java.lang.Integer"/>
+	<field name="cod_insumo" class="java.lang.Integer"/>
+	<field name="descricao_produto" class="java.lang.String"/>
+	<field name="unidade" class="java.lang.Integer"/>
+	<group name="id_insumo">
+		<groupExpression><![CDATA[$F{id_insumo}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="518b8c8b-23e9-4552-8efb-60d2d9319084"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Projeto MetalGer]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" uuid="8fbc9d56-2476-4d72-bead-5bb587b3862e"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatorio Insumos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="61" uuid="7f4de5e1-b118-48c2-8e15-ec01be0a57b2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="d5c68f89-4091-441b-a288-6b847091d391"/>
+				<text><![CDATA[id_insumo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="138" height="20" uuid="bc3ccc10-bb9f-4645-b1f9-bd662da71ee8"/>
+				<text><![CDATA[cod_insumo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="138" height="20" uuid="02273b7f-591f-4867-8350-73fc0954b5b8"/>
+				<text><![CDATA[descricao_produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="138" height="20" uuid="75751152-4505-4d6a-8ab0-98fcd4ad5b79"/>
+				<text><![CDATA[unidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="125" uuid="170707bb-eaa7-4bbb-b2d3-003641be13a2"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="a52e41bf-28df-4182-bdcf-adc0a93877b3"/>
+				<textFieldExpression><![CDATA[$F{id_insumo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="67e55cd8-cce1-4417-aa71-61a3dbdb8918"/>
+				<textFieldExpression><![CDATA[$F{cod_insumo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="986590b7-26f6-4fa3-8681-0aaab2ca1cb9"/>
+				<textFieldExpression><![CDATA[$F{descricao_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="fcf5b128-f1d6-4018-b13e-a80741e69477"/>
+				<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

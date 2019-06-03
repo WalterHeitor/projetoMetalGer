@@ -116,7 +116,7 @@ public class telaInicial extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        try {
+       /* try {
             JRResultSetDataSource setDataSource;
             setDataSource = new JRResultSetDataSource(
                     (ResultSet) FuncionarioDAO.getInstance().findAll());
@@ -128,7 +128,7 @@ public class telaInicial extends javax.swing.JFrame {
             jv.toFront();
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
-        }
+        }*/
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
