@@ -15,6 +15,7 @@ public abstract class Pessoa_ {
 	public static volatile SetAttribute<Pessoa, EmprestimoFerramenta> emprestimo_ferramenta;
 	public static volatile SetAttribute<Pessoa, Enderecos> enderecos;
 	public static volatile SetAttribute<Pessoa, Dependentes> dependentes;
+	public static volatile SetAttribute<Pessoa, MaoObraOrdemServico> maoObraOrdemServicos;
 	public static volatile SingularAttribute<Pessoa, String> nome;
 	public static volatile SetAttribute<Pessoa, Projetos> projetoses;
 	public static volatile SetAttribute<Pessoa, PedidoCompra> pedidoCompras;
