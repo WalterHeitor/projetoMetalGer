@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ClienteDAO;
 import Controller.FuncionarioDAO;
 import java.sql.ResultSet;
 import java.util.HashMap;
@@ -37,50 +38,77 @@ public class telaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        MenuCadastro = new javax.swing.JMenu();
+        MenuCadFuncionarios = new javax.swing.JMenuItem();
+        MenuCadClientes = new javax.swing.JMenuItem();
+        MenuCadFerramentas = new javax.swing.JMenuItem();
+        Relatorios = new javax.swing.JMenu();
+        MenuRelatorioFuncionario_ = new javax.swing.JMenuItem();
+        MenuRelatorioCliente_ = new javax.swing.JMenuItem();
+        MenuRelatorioFerramenta_ = new javax.swing.JMenuItem();
+        MenuRelatorioInsumo_ = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Cadastros");
+        MenuCadastro.setText("Cadastros");
 
-        jMenuItem1.setText("Funcionarios");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        MenuCadFuncionarios.setText("Funcionarios");
+        MenuCadFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                MenuCadFuncionariosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        MenuCadastro.add(MenuCadFuncionarios);
 
-        jMenuItem2.setText("Clientes");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        MenuCadClientes.setText("Clientes");
+        MenuCadClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                MenuCadClientesActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        MenuCadastro.add(MenuCadClientes);
 
-        jMenuItem3.setText("Ferramentas");
-        jMenu1.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Relatorios");
-
-        jMenuItem4.setText("Funcionario");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        MenuCadFerramentas.setText("Ferramentas");
+        MenuCadFerramentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                MenuCadFerramentasActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        MenuCadastro.add(MenuCadFerramentas);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(MenuCadastro);
+
+        Relatorios.setText("Relatorios");
+
+        MenuRelatorioFuncionario_.setText("Funcionarios");
+        MenuRelatorioFuncionario_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioFuncionario_ActionPerformed(evt);
+            }
+        });
+        Relatorios.add(MenuRelatorioFuncionario_);
+
+        MenuRelatorioCliente_.setText("Clientes");
+        MenuRelatorioCliente_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioCliente_ActionPerformed(evt);
+            }
+        });
+        Relatorios.add(MenuRelatorioCliente_);
+
+        MenuRelatorioFerramenta_.setText("Ferramentas");
+        Relatorios.add(MenuRelatorioFerramenta_);
+
+        MenuRelatorioInsumo_.setText("Insumos");
+        MenuRelatorioInsumo_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioInsumo_ActionPerformed(evt);
+            }
+        });
+        Relatorios.add(MenuRelatorioInsumo_);
+
+        jMenuBar1.add(Relatorios);
 
         jMenu5.setText("Serviços");
         jMenuBar1.add(jMenu5);
@@ -102,19 +130,19 @@ public class telaInicial extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void MenuCadFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadFuncionariosActionPerformed
         // TODO add your handling code here:
         TelaCadastroEmpregado cadastroEmpregado = new TelaCadastroEmpregado();
         cadastroEmpregado.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_MenuCadFuncionariosActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void MenuCadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadClientesActionPerformed
         // TODO add your handling code here:
         telaCadastroClientes tlcli = new telaCadastroClientes();
         tlcli.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_MenuCadClientesActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void MenuRelatorioFuncionario_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioFuncionario_ActionPerformed
         // TODO add your handling code here:
         try {
             JRResultSetDataSource setDataSource;
@@ -129,7 +157,45 @@ public class telaInicial extends javax.swing.JFrame {
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
         }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_MenuRelatorioFuncionario_ActionPerformed
+
+    private void MenuRelatorioInsumo_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioInsumo_ActionPerformed
+        // TODO add your handling code here:
+        try { 
+            JRResultSetDataSource setDataSource;
+            setDataSource = new JRResultSetDataSource(
+                    (ResultSet) FuncionarioDAO.getInstance().findAll());
+            JasperPrint jasperPrint;
+            jasperPrint = JasperFillManager.fillReport("Relatorios/relatorioFuncionario.jasper",
+                    new HashMap(), setDataSource);
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
+        }
+    }//GEN-LAST:event_MenuRelatorioInsumo_ActionPerformed
+
+    private void MenuCadFerramentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadFerramentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuCadFerramentasActionPerformed
+
+    private void MenuRelatorioCliente_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioCliente_ActionPerformed
+        // TODO add your handling code here:
+        try {
+            JRResultSetDataSource setDataSource;
+            setDataSource = new JRResultSetDataSource(
+                    (ResultSet) ClienteDAO.getInstance().findAll());
+            JasperPrint jasperPrint;
+            jasperPrint = JasperFillManager.fillReport("Relatorios/relatorioCliente.jasper",
+                    new HashMap(), setDataSource);
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
+        }
+    }//GEN-LAST:event_MenuRelatorioCliente_ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,13 +233,16 @@ public class telaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem MenuCadClientes;
+    private javax.swing.JMenuItem MenuCadFerramentas;
+    private javax.swing.JMenuItem MenuCadFuncionarios;
+    private javax.swing.JMenu MenuCadastro;
+    private javax.swing.JMenuItem MenuRelatorioCliente_;
+    private javax.swing.JMenuItem MenuRelatorioFerramenta_;
+    private javax.swing.JMenuItem MenuRelatorioFuncionario_;
+    private javax.swing.JMenuItem MenuRelatorioInsumo_;
+    private javax.swing.JMenu Relatorios;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

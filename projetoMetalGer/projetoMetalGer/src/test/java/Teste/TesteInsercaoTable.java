@@ -36,11 +36,12 @@ public class TesteInsercaoTable {
       p.setPessoa(c);
       //ProjetosDAO.getInstance().persist(p);
       System.out.println("---- cliente e projeto --- inserido com sucesso ----");
-      ProjetosDAO.getInstance().merge(p);
+      //ProjetosDAO.getInstance().merge(p);
       Insumo i = new Insumo("disco de corte", 123, 1);
       InsumoDAO.getInstance().persist(i);
       System.out.println("---- Insumo inserido com sucesso----");
       OrdemServico os = new OrdemServico(new Date(00, 8, 2), new Date(00, 8, 10), new Date(00, 8, 12), "confecção transportadora", "Executando",p);
+      os.setProjetos(p);
       OrdemServicoDAO.getInstance().merge(os);
         System.out.println("----- Ordem Serviço inserido com sucesso ----"); 
         System.out.println("---------------- teste realizado com sucesso ------------------");
