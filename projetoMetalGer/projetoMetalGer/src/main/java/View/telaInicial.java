@@ -43,15 +43,12 @@ public class telaInicial extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-<<<<<<< HEAD
         MenuRelatorioFuncionario_ = new javax.swing.JMenuItem();
         MenuRelatorioCliente_ = new javax.swing.JMenuItem();
         MenuRelatorioFerramenta_ = new javax.swing.JMenuItem();
         MenuRelatorioInsumo_ = new javax.swing.JMenuItem();
-=======
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
->>>>>>> 4e457893d7f1e9aa134ae8385df851d7f279106d
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
