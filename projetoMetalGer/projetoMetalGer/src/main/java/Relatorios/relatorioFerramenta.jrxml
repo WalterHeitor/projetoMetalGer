@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioFerramenta" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ec4db9a-e970-4132-8fa3-5dd36614abaa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select *from ferramenta]]>
+	</queryString>
+	<field name="id_ferramenta" class="java.lang.Long"/>
+	<field name="descricao_ferr" class="java.lang.String"/>
+	<field name="patrimonio_ferr" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<group name="id_ferramenta">
+		<groupExpression><![CDATA[$F{id_ferramenta}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="e682738d-f902-4edd-addf-8b41fa0fe9a7"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Projeto MetalGer]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" uuid="93590de4-22e5-4b5b-864a-65f1383b4a3c"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatorio de Ferramentas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="61" uuid="055075b2-cb10-4b73-bb0b-c049161b5e52"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="c6e42763-0882-4b54-a49d-d1846c21c016"/>
+				<text><![CDATA[id_ferramenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="138" height="20" uuid="46b4a652-64ff-45db-a1d3-2ba350a60cd2"/>
+				<text><![CDATA[descricao_ferr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="138" height="20" uuid="0988b29f-cf6c-4c6c-a92c-d2c4f1a2b7d4"/>
+				<text><![CDATA[patrimonio_ferr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="138" height="20" uuid="f297e740-8937-463c-90c0-9a3f4a6f642c"/>
+				<text><![CDATA[status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="125" uuid="5475b549-0339-42df-90c7-203e3f9c00a2"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="e8c7bbe7-9bb7-40bb-8a1e-74ac0288e18c"/>
+				<textFieldExpression><![CDATA[$F{id_ferramenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="5946da50-2cc2-4cd5-a7ce-a50b96696e13"/>
+				<textFieldExpression><![CDATA[$F{descricao_ferr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="af8bc405-3e5e-4272-a462-c8c59f0cae50"/>
+				<textFieldExpression><![CDATA[$F{patrimonio_ferr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="bada4473-2a07-4daa-9437-b5c82643228b"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

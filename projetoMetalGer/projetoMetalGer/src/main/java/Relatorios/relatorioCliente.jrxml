@@ -21,9 +21,9 @@
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="79" uuid="97205405-d40f-460c-846a-e215e0e57a59"/>
 				<textElement textAlignment="Center">
-					<font size="24"/>
+					<font size="36"/>
 				</textElement>
-				<text><![CDATA[Metalurgica LCP]]></text>
+				<text><![CDATA[Projeto MetalGer]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -32,7 +32,7 @@
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="35" uuid="1a3e252d-bece-46e2-8e57-fa475d75bf67"/>
 				<textElement textAlignment="Center">
-					<font size="14"/>
+					<font size="24"/>
 				</textElement>
 				<text><![CDATA[Relatorio de Clientes]]></text>
 			</staticText>

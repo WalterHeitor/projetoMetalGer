@@ -47,6 +47,8 @@ public class telaInicial extends javax.swing.JFrame {
         MenuRelatorioCliente_ = new javax.swing.JMenuItem();
         MenuRelatorioFerramenta_ = new javax.swing.JMenuItem();
         MenuRelatorioInsumo_ = new javax.swing.JMenuItem();
+        MenuRelatorioOrdemServico_ = new javax.swing.JMenuItem();
+        MenuRelatorioProjetoClientes = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,6 +100,11 @@ public class telaInicial extends javax.swing.JFrame {
         Relatorios.add(MenuRelatorioCliente_);
 
         MenuRelatorioFerramenta_.setText("Ferramentas");
+        MenuRelatorioFerramenta_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioFerramenta_ActionPerformed(evt);
+            }
+        });
         Relatorios.add(MenuRelatorioFerramenta_);
 
         MenuRelatorioInsumo_.setText("Insumos");
@@ -107,6 +114,22 @@ public class telaInicial extends javax.swing.JFrame {
             }
         });
         Relatorios.add(MenuRelatorioInsumo_);
+
+        MenuRelatorioOrdemServico_.setText("Ordem Serviço");
+        MenuRelatorioOrdemServico_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioOrdemServico_ActionPerformed(evt);
+            }
+        });
+        Relatorios.add(MenuRelatorioOrdemServico_);
+
+        MenuRelatorioProjetoClientes.setText("Projeto/Clientes");
+        MenuRelatorioProjetoClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioProjetoClientesActionPerformed(evt);
+            }
+        });
+        Relatorios.add(MenuRelatorioProjetoClientes);
 
         jMenuBar1.add(Relatorios);
 
@@ -197,6 +220,57 @@ public class telaInicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenuRelatorioCliente_ActionPerformed
 
+    private void MenuRelatorioFerramenta_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioFerramenta_ActionPerformed
+        // TODO add your handling code here:
+        try {
+            JRResultSetDataSource setDataSource;
+            setDataSource = new JRResultSetDataSource(
+                    (ResultSet) ClienteDAO.getInstance().findAll());
+            JasperPrint jasperPrint;
+            jasperPrint = JasperFillManager.fillReport("Relatorios/relatorioFerramenta.jasper",
+                    new HashMap(), setDataSource);
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
+        }
+    }//GEN-LAST:event_MenuRelatorioFerramenta_ActionPerformed
+
+    private void MenuRelatorioOrdemServico_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioOrdemServico_ActionPerformed
+        // TODO add your handling code here:
+        try {
+            JRResultSetDataSource setDataSource;
+            setDataSource = new JRResultSetDataSource(
+                    (ResultSet) ClienteDAO.getInstance().findAll());
+            JasperPrint jasperPrint;
+            jasperPrint = JasperFillManager.fillReport("Relatorios/relatorioOrdemServico.jasper",
+                    new HashMap(), setDataSource);
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
+        }
+    }//GEN-LAST:event_MenuRelatorioOrdemServico_ActionPerformed
+
+    private void MenuRelatorioProjetoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioProjetoClientesActionPerformed
+        // TODO add your handling code here:
+        try {
+            JRResultSetDataSource setDataSource;
+            setDataSource = new JRResultSetDataSource(
+                    (ResultSet) ClienteDAO.getInstance().findAll());
+            JasperPrint jasperPrint;
+            jasperPrint = JasperFillManager.fillReport("Relatorios/relatorioProjetoCliente.jasper",
+                    new HashMap(), setDataSource);
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
+        }
+    }//GEN-LAST:event_MenuRelatorioProjetoClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,6 +315,8 @@ public class telaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuRelatorioFerramenta_;
     private javax.swing.JMenuItem MenuRelatorioFuncionario_;
     private javax.swing.JMenuItem MenuRelatorioInsumo_;
+    private javax.swing.JMenuItem MenuRelatorioOrdemServico_;
+    private javax.swing.JMenuItem MenuRelatorioProjetoClientes;
     private javax.swing.JMenu Relatorios;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;

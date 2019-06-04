@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioProjetoCliente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="23500176-50f4-4507-8fc8-3ca3598e7d85">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select *from projetos p, cliente c where c.id_pessoa = p.id_pessoa;]]>
+	</queryString>
+	<field name="id_projeto" class="java.lang.Integer"/>
+	<field name="titulo_projeto" class="java.lang.String"/>
+	<field name="local_projeto" class="java.lang.String"/>
+	<field name="id_pessoa" class="java.lang.Integer"/>
+	<field name="fantasia" class="java.lang.String"/>
+	<field name="cnpj" class="java.lang.String"/>
+	<group name="id_projeto">
+		<groupExpression><![CDATA[$F{id_projeto}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="b92aa65d-ad33-4de7-8211-4eb0cd9e6302"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Projeto MetalGer]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" uuid="d8da7af2-f2b2-4e38-bab7-5a456598c830"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatorio Projeto/Cliente]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="61" uuid="36062c74-2fcb-4f16-bd33-2a773283e556"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="92" height="20" uuid="d9abe3c2-d1ba-42a1-9d22-ca09ddda951e"/>
+				<text><![CDATA[id_projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="0" width="92" height="20" uuid="5b1c5a6d-631c-403e-9793-31e1d737da6f"/>
+				<text><![CDATA[titulo_projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="92" height="20" uuid="86ee4407-7205-4aea-8d46-76f05fa8456a"/>
+				<text><![CDATA[local_projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="92" height="20" uuid="9751d42a-0fd4-4ecc-931d-538094aa4d8c"/>
+				<text><![CDATA[id_pessoa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="92" height="20" uuid="0fdd7883-0060-4c2c-8217-2c43768ff139"/>
+				<text><![CDATA[fantasia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="92" height="20" uuid="1bbebf96-de33-4354-a893-654c45ab4c4c"/>
+				<text><![CDATA[cnpj]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="125" uuid="c73eb0a9-a97c-4c2c-b8b4-6ab01cfd3d89"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="92" height="20" uuid="4c504d5c-edd8-4bb4-9ae6-a7a8aa3ccc66"/>
+				<textFieldExpression><![CDATA[$F{id_projeto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="0" width="92" height="20" uuid="f17fbf0f-22c3-4d2f-ae0c-b9b950c6f60f"/>
+				<textFieldExpression><![CDATA[$F{titulo_projeto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="92" height="20" uuid="fa74b006-6816-423d-828f-46b4c884c9d0"/>
+				<textFieldExpression><![CDATA[$F{local_projeto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="92" height="20" uuid="8be0ef14-c023-4bbe-b127-c0c0f6fb1602"/>
+				<textFieldExpression><![CDATA[$F{id_pessoa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="92" height="20" uuid="2a3a4ca9-98df-4f09-8968-78208e564004"/>
+				<textFieldExpression><![CDATA[$F{fantasia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="92" height="20" uuid="ef5f2509-0555-4aea-8e78-41846cf89dbb"/>
+				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
