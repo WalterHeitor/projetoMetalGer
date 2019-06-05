@@ -223,7 +223,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(textTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,9 +282,9 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastrar)
-                .addGap(22, 22, 22))
+                .addGap(42, 42, 42))
         );
 
         getContentPane().add(jPanel1);
@@ -304,7 +304,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelaClientes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 610, 760, 170);
+        jScrollPane1.setBounds(10, 640, 760, 170);
 
         setSize(new java.awt.Dimension(797, 862));
         setLocationRelativeTo(null);
