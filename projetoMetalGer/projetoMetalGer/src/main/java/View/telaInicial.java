@@ -190,7 +190,8 @@ public class telaInicial extends javax.swing.JFrame {
             setDataSource = new JRResultSetDataSource(
                     (ResultSet) FuncionarioDAO.getInstance().findAll());
             JasperPrint jasperPrint;
-            jasperPrint = JasperFillManager.fillReport("Relatorios/relatorioFuncionario.jasper",
+            jasperPrint = JasperFillManager.fillReport("C://Users//walter heitor//Desktop//projetoMetalGer//projetoMetalGer//projetoMetalGer//"
+                    + "RElatorios//relatorioFuncionario.jasper",
                     new HashMap(), setDataSource);
             JasperViewer jv = new JasperViewer(jasperPrint, false);
             jv.setVisible(true);
@@ -209,7 +210,7 @@ public class telaInicial extends javax.swing.JFrame {
         try {
             
             JasperPrint jasperPrint;
-            jasperPrint = JasperFillManager.fillReport("relatorioCliente.jrxml",
+            jasperPrint = JasperFillManager.fillReport("C:\\Users\\walter heitor\\Desktop\\projetoMetalGer\\projetoMetalGer\\projetoMetalGer\\RElatorios\\relatorioCliente.jrxml",
                     null, new JRBeanCollectionDataSource(ClienteDAO.getInstance().findAll()));
             JasperViewer jv = new JasperViewer(jasperPrint, false);
             jv.setVisible(true);
