@@ -80,6 +80,7 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelaProjeto);
 
+        btnBuscarProjetos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
         btnBuscarProjetos.setText("Buscar Projetos");
         btnBuscarProjetos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +103,7 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBuscarProjetos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
