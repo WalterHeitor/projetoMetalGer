@@ -7,11 +7,19 @@ package View;
 
 import Controller.ClienteDAO;
 import Controller.FuncionarioDAO;
+import Controller.ProjetosDAO;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -167,22 +175,47 @@ public class telaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuCadClientesActionPerformed
 
     private void MenuRelatorioFuncionario_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioFuncionario_ActionPerformed
-        // TODO add your handling code here:
-        try {
+       // TODO add your handling code here:
+            /* try {
             JRResultSetDataSource setDataSource;
             setDataSource = new JRResultSetDataSource(
-                    (ResultSet) FuncionarioDAO.getInstance().findAll());
+            (ResultSet) FuncionarioDAO.getInstance().findAll());
             JasperPrint jasperPrint;
             jasperPrint = JasperFillManager.fillReport("Relatorios/relatorioFuncionario.jasper",
-                    new HashMap(), setDataSource);
+            new HashMap(), setDataSource);
             JasperViewer jv = new JasperViewer(jasperPrint, false);
             jv.setVisible(true);
             jv.toFront();
-        } catch (Exception e) {
+            } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar o relatorio"+e.getMessage());
+            }*/
+        
+        try {
+            System.out.println("gerar relatorio");
+            GerarRelatorioFuncionario();
+        } catch (JRException ex) {
+            Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+       
+       
+       
     }//GEN-LAST:event_MenuRelatorioFuncionario_ActionPerformed
 
+    public void GerarRelatorioFuncionario()throws JRException{
+        System.out.println("gerando relatorio Funcionarios");
+        
+        List listaFuncionarios = FuncionarioDAO.getInstance().findAll();
+        
+        JasperReport jr =
+                JasperCompileManager.compileReport("C:/Users/walter heitor/Desktop/projetoMetalGer/projetoMetalGer/projetoMetalGer/src/main/java/Relatorios//rerlatorioFuncionario.jrxml");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(listaFuncionarios));
+        JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/teste/reportFunc.pdf");
+        System.out.println("Relatorio gerado");
+        
+    }
+    
+    
     private void MenuRelatorioInsumo_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioInsumo_ActionPerformed
         // TODO add your handling code here:
         try { 
@@ -256,20 +289,20 @@ public class telaInicial extends javax.swing.JFrame {
 
     private void MenuRelatorioProjetoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioProjetoClientesActionPerformed
         // TODO add your handling code here:
-        try {
-            
-            JasperPrint jasperPrint;
-            jasperPrint = JasperFillManager.fillReport("C://Users//walter heitor//Desktop//projetoMetalGer//projetoMetalGer//projetoMetalGer//src"
-                    + "//main//java//Relatorios//relatorioProjetoCliente.jrxmlr",
-                    null, new JRBeanCollectionDataSource(ClienteDAO.getInstance().findAll()));
-            JasperViewer jv = new JasperViewer(jasperPrint, false);
-            jv.setVisible(true);
-            jv.toFront();
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null,"Erro ao realizar -------o relatorio"+e.getMessage());
-        }
+        
     }//GEN-LAST:event_MenuRelatorioProjetoClientesActionPerformed
 
+    
+    public void GerarRelatorioProjetoCliente()throws JRException{
+        System.out.println("gerando relatorio ");
+        List listaProjeto = ProjetosDAO.getInstance().findAll();
+        
+        JasperReport jr =
+                JasperCompileManager.compileReport("C:/Users/walter heitor/Desktop/projetoMetalGer/projetoMetalGer/projetoMetalGer/src/main/java/Relatorios//rerlatorioProjetoCliente.jrxml");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(listaProjeto));
+        JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/teste/reportProjCliente.pdf");
+        System.out.println("Relatorio gerado");
+    }
     /**
      * @param args the command line arguments
      */
