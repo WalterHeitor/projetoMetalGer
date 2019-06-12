@@ -5,8 +5,8 @@
  */
 package View;
 
-import Controller.ProjetosDAO;
-import Model.Projetos;
+import Controller.ClienteDAO;
+import Model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -15,38 +15,31 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author walter heitor
  */
-public class TelaBuscaProjetos extends javax.swing.JFrame {
+public class TelaBuscaClientes extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaBuscaProjetos
      */
-    public TelaBuscaProjetos() {
+    public TelaBuscaClientes() {
         initComponents();
     }
     
-    public void popularTabelaProjeto(List<Projetos> plistaProjetos){
+    public void popularTabelaCliente(List<Cliente> plistaCliente){
         DefaultTableModel modeloTabela = new DefaultTableModel();
-        this.tabelaProjeto.setModel(modeloTabela);
-        modeloTabela.addColumn("Id");
-        modeloTabela.addColumn("Local");
-        modeloTabela.addColumn("Titulo");
-        modeloTabela.addColumn("Subtitulo");
-        modeloTabela.addColumn("Projetado");
-        modeloTabela.addColumn("Desenhado");
-        modeloTabela.addColumn("Revisado");
-        modeloTabela.addColumn("Aprovado");
+        this.tabelaCliente.setModel(modeloTabela);
+        modeloTabela.addColumn("Tipo");
+        modeloTabela.addColumn("Nome");
+        modeloTabela.addColumn("Razao Social");
+        modeloTabela.addColumn("Nome Fantasia");
+        modeloTabela.addColumn("CNPJ");
         
-        
-        for(Projetos p :plistaProjetos){
+        for(Cliente c :plistaCliente){
             modeloTabela.addRow(new Object[]{
-                p.getId_projeto(),
-                p.getLocal_projeto(),
-                p.getTitulo_projeto(),
-                p.getSubtitulo_projeto(),
-                p.getProjetado(),
-                p.getDesenhado(),
-                p.getRevisado(),
-                p.getAprovado()
+                c.getTipo(),
+                c.getNome(),
+                c.getRazao_social(),
+                c.getFantasia(),
+                c.getCnpj()
             });
         }
     }
@@ -61,13 +54,13 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaProjeto = new javax.swing.JTable();
+        tabelaCliente = new javax.swing.JTable();
         btnBuscarProjetos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Busca de Projetos");
 
-        tabelaProjeto.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,10 +71,9 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabelaProjeto);
+        jScrollPane1.setViewportView(tabelaCliente);
 
-        btnBuscarProjetos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
-        btnBuscarProjetos.setText("Buscar Projetos");
+        btnBuscarProjetos.setText("buscar Clientes");
         btnBuscarProjetos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarProjetosActionPerformed(evt);
@@ -103,7 +95,7 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBuscarProjetos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -120,9 +112,9 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
         ProjetosDAO.getInstance().persist(p2);*/
        
        
-        List<Projetos> listaProjetos = new ArrayList<>();
-        listaProjetos = ProjetosDAO.getInstance().findAll();
-        this.popularTabelaProjeto(listaProjetos);
+        List<Cliente> listaCliente = new ArrayList<>();
+        listaCliente = ClienteDAO.getInstance().findAll();
+        this.popularTabelaCliente(listaCliente);
     }//GEN-LAST:event_btnBuscarProjetosActionPerformed
 
     /**
@@ -142,20 +134,21 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaProjetos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaProjetos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaProjetos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaProjetos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaBuscaProjetos().setVisible(true);
+                new TelaBuscaClientes().setVisible(true);
                 
             }
         });
@@ -164,6 +157,6 @@ public class TelaBuscaProjetos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarProjetos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaProjeto;
+    private javax.swing.JTable tabelaCliente;
     // End of variables declaration//GEN-END:variables
 }
