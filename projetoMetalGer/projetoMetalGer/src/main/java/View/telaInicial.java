@@ -210,7 +210,7 @@ public class telaInicial extends javax.swing.JFrame {
         JasperReport jr =
                 JasperCompileManager.compileReport("C:/Users/walter heitor/Desktop/projetoMetalGer/projetoMetalGer/projetoMetalGer/src/main/java/Relatorios//rerlatorioFuncionario.jrxml");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(listaFuncionarios));
-        JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/teste/reportFunc.pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/Users/walter heitor/Desktop/teste/reportFunc.pdf");
         System.out.println("Relatorio gerado");
         
     }
@@ -288,8 +288,12 @@ public class telaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuRelatorioOrdemServico_ActionPerformed
 
     private void MenuRelatorioProjetoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioProjetoClientesActionPerformed
-        // TODO add your handling code here:
-        
+        try {
+            // TODO add your handling code here:
+            GerarRelatorioProjetoCliente();
+        } catch (JRException ex) {
+            Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_MenuRelatorioProjetoClientesActionPerformed
 
     
@@ -298,7 +302,7 @@ public class telaInicial extends javax.swing.JFrame {
         List listaProjeto = ProjetosDAO.getInstance().findAll();
         
         JasperReport jr =
-                JasperCompileManager.compileReport("C:/Users/walter heitor/Desktop/projetoMetalGer/projetoMetalGer/projetoMetalGer/src/main/java/Relatorios//rerlatorioProjetoCliente.jrxml");
+                JasperCompileManager.compileReport("C:/Users/walter heitor/Desktop/projetoMetalGer/projetoMetalGer/projetoMetalGer/src/main/java/Relatorios//relatorioProjetoCliente.jrxml");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(listaProjeto));
         JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/teste/reportProjCliente.pdf");
         System.out.println("Relatorio gerado");
