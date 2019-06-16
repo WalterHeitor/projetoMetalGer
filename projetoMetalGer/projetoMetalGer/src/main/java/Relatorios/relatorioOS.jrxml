@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioOS" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d75f1a8-4cc4-4708-af2f-c5623e2ce292">
+	<queryString language="SQL">
+		<![CDATA[select *from ordem_servico]]>
+	</queryString>
+	<field name="id_ordem_servico" class="java.lang.Long"/>
+	<field name="descricao_servico" class="java.lang.String"/>
+	<field name="dt_prevista" class="java.sql.Timestamp"/>
+	<field name="dt_fim" class="java.sql.Timestamp"/>
+	<field name="dt_inicio" class="java.sql.Timestamp"/>
+	<field name="statusservco" class="java.lang.String"/>
+	<field name="id_projeto" class="java.lang.Integer"/>
+	<group name="id_ordem_servico">
+		<groupExpression><![CDATA[$F{id_ordem_servico}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="c6c19666-2430-4159-8262-fb1132fb8f69"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Projeto MetalGer]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" uuid="3d21fa57-172b-421e-907e-9c14e2ff21d7"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatorio Ordem Serviço]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="61" uuid="1c5f9120-a273-4f02-b7e0-2eab4b0abb4f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="79" height="20" uuid="49ebc6c0-d8dc-49ef-9108-a165c91a0ed9"/>
+				<text><![CDATA[id_ordem_servico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="0" width="79" height="20" uuid="0517353a-9578-4cfb-bb68-b23a9dabee83"/>
+				<text><![CDATA[descricao_servico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="0" width="79" height="20" uuid="f5955e83-038f-4b36-a8fa-2e10ca810eea"/>
+				<text><![CDATA[dt_prevista]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="0" width="79" height="20" uuid="c720161d-c592-46d5-863c-40d0f5c314dc"/>
+				<text><![CDATA[dt_fim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="0" width="79" height="20" uuid="25de4435-e9c6-4424-9ff4-6bef7d904165"/>
+				<text><![CDATA[dt_inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="0" width="79" height="20" uuid="8782414d-75cc-4514-aa4f-11aa1c01717a"/>
+				<text><![CDATA[statusservco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="0" width="79" height="20" uuid="c3f2a59b-f0b6-4eeb-bf33-ddd4f41bd19b"/>
+				<text><![CDATA[id_projeto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="125" uuid="8a741089-7cc2-4228-b62c-10a053341bcc"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="79" height="20" uuid="01ef6cb1-e332-4f1e-803f-5eb54b7834c5"/>
+				<textFieldExpression><![CDATA[$F{id_ordem_servico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="0" width="79" height="20" uuid="b889505f-dc2e-4068-85e2-3122217c8d16"/>
+				<textFieldExpression><![CDATA[$F{descricao_servico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="0" width="79" height="20" uuid="9ca12861-47ca-4044-931a-80ad03623826"/>
+				<textFieldExpression><![CDATA[$F{dt_prevista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="0" width="79" height="20" uuid="f04fbee9-cb6c-42d6-b409-93873ac2dd4d"/>
+				<textFieldExpression><![CDATA[$F{dt_fim}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="79" height="20" uuid="e89ee001-7af7-4a04-95c7-8d8352979778"/>
+				<textFieldExpression><![CDATA[$F{dt_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="0" width="79" height="20" uuid="4ba387a7-7a4f-4992-b05c-2ff7a168090a"/>
+				<textFieldExpression><![CDATA[$F{statusservco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="0" width="79" height="20" uuid="0fb8e5e9-5f0b-40f6-a122-df21ed6742e7"/>
+				<textFieldExpression><![CDATA[$F{id_projeto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

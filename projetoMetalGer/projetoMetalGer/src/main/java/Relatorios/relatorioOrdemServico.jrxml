@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioOrdemServico" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e0d1f1f-0a39-4dcd-bd79-73d78d4fb12f">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioOrdemServico" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c75d068b-15f5-4976-8975-5130d73f1648">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
-		<![CDATA[select *from ordem_servico os, projetos pj where os.id_projeto = pj.id_projeto;]]>
+		<![CDATA[select *from ordem_servico]]>
 	</queryString>
 	<field name="id_ordem_servico" class="java.lang.Long"/>
 	<field name="descricao_servico" class="java.lang.String"/>
 	<field name="dt_prevista" class="java.sql.Timestamp"/>
 	<field name="statusservco" class="java.lang.String"/>
-	<field name="id_projeto" class="java.lang.Integer"/>
-	<field name="titulo_projeto" class="java.lang.String"/>
 	<group name="id_ordem_servico">
 		<groupExpression><![CDATA[$F{id_ordem_servico}]]></groupExpression>
 	</group>
@@ -21,7 +19,7 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="79" uuid="20106507-b2f8-4178-a672-10fcc002b6cc"/>
+				<reportElement x="0" y="0" width="555" height="79" uuid="11b663ca-c59d-43c9-8dec-b5c7cc712d95"/>
 				<textElement textAlignment="Center">
 					<font size="36"/>
 				</textElement>
@@ -32,73 +30,57 @@
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="35" uuid="7b37a28a-d74a-4222-8b57-7e82055e1934"/>
+				<reportElement x="0" y="0" width="555" height="35" uuid="8d8a76bd-5334-4ae3-9dd8-be91f5e28b52"/>
 				<textElement textAlignment="Center">
 					<font size="24"/>
 				</textElement>
-				<text><![CDATA[Relatorio OS]]></text>
+				<text><![CDATA[Relatorio Ordem Serviço]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="61" uuid="69845f32-eef6-4215-b873-165f41e900ef"/>
+				<reportElement x="0" y="0" width="555" height="61" uuid="34823f60-23d6-4b53-9ee9-0c13f7bb166b"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="0" width="92" height="20" uuid="f8e4a284-457a-4341-b2f1-b3dcfb4d65cf"/>
+				<reportElement x="0" y="0" width="138" height="20" uuid="06d235d0-998a-4922-ad25-3cf9ed29a8e3"/>
 				<text><![CDATA[id_ordem_servico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="92" y="0" width="92" height="20" uuid="8f6830f8-4188-4200-87cd-1553d29b0f6c"/>
+				<reportElement x="138" y="0" width="138" height="20" uuid="32908255-9ed8-45b1-9b9d-0628612a12bb"/>
 				<text><![CDATA[descricao_servico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="184" y="0" width="92" height="20" uuid="cfbda208-2b92-4914-be5f-10edf77469b9"/>
+				<reportElement x="276" y="0" width="138" height="20" uuid="203b72a1-006c-42b0-b0bc-8fe6b0e675ba"/>
 				<text><![CDATA[dt_prevista]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="0" width="92" height="20" uuid="61e4d418-51b7-4a93-8662-33c7730b64b5"/>
+				<reportElement x="414" y="0" width="138" height="20" uuid="424673e9-7ece-4cc2-b4de-81ddce69ca0b"/>
 				<text><![CDATA[statusservco]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="368" y="0" width="92" height="20" uuid="63d9faf1-026d-486a-9b2d-1a2b24100f18"/>
-				<text><![CDATA[id_projeto]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="460" y="0" width="92" height="20" uuid="ce0e692e-a4dc-453b-9633-bc6b2398b49f"/>
-				<text><![CDATA[titulo_projeto]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="125" uuid="d539dfd1-e510-4e34-ac7c-36469a0ff00c"/>
+				<reportElement x="0" y="0" width="555" height="125" uuid="3460090d-bd4e-4294-88f9-c0bc5a9ae478"/>
 			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="92" height="20" uuid="d08ffba1-16a0-413a-80ee-cb799c966cee"/>
+				<reportElement x="0" y="0" width="138" height="20" uuid="9941acbf-2fcc-4537-8eee-c66bc815dbfe"/>
 				<textFieldExpression><![CDATA[$F{id_ordem_servico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="92" y="0" width="92" height="20" uuid="b6407131-3865-4ac1-9b47-df656e135afa"/>
+				<reportElement x="138" y="0" width="138" height="20" uuid="a9d3fb35-0a89-4991-ac05-11921009b2f6"/>
 				<textFieldExpression><![CDATA[$F{descricao_servico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="184" y="0" width="92" height="20" uuid="7f69dc7d-6058-48c3-a11f-590ffb8bb541"/>
+				<reportElement x="276" y="0" width="138" height="20" uuid="426dc9f6-fc02-41c8-b683-c1ffef5bbe11"/>
 				<textFieldExpression><![CDATA[$F{dt_prevista}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="276" y="0" width="92" height="20" uuid="87c34936-d700-4f26-949e-a80b7d8399c4"/>
+				<reportElement x="414" y="0" width="138" height="20" uuid="17a9eae7-8122-4b02-8e1c-e3f4f43227ac"/>
 				<textFieldExpression><![CDATA[$F{statusservco}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="368" y="0" width="92" height="20" uuid="edcc93dd-6b8d-44dc-8891-4dc1d7956c0c"/>
-				<textFieldExpression><![CDATA[$F{id_projeto}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="460" y="0" width="92" height="20" uuid="9d1c8146-8e21-419d-9379-dc8acc6e55b3"/>
-				<textFieldExpression><![CDATA[$F{titulo_projeto}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

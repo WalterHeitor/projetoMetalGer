@@ -1,11 +1,13 @@
 package Teste;
 
 
+import Controller.FerramentaDAO;
 import Controller.FuncionarioDAO;
 import Controller.InsumoDAO;
 import Controller.OrdemServicoDAO;
 import Controller.ProjetosDAO;
 import Model.Cliente;
+import Model.Ferramenta;
 import Model.Funcionario;
 import Model.Insumo;
 import Model.OrdemServico;
@@ -44,6 +46,9 @@ public class TesteInsercaoTable {
       os.setProjetos(p);
       OrdemServicoDAO.getInstance().merge(os);
         System.out.println("----- Ordem Serviço inserido com sucesso ----"); 
+     Ferramenta frr = new Ferramenta(011, "Não emprestado", "Lixadeira 4 1/2 boch" , "001256", new Date(16,5,19), "manual", new Date(19,5,16), "010101", "itumbiara");
+     FerramentaDAO.getInstance().persist(frr);
+        System.out.println("ferramenta inserido com sucesso");
         System.out.println("---------------- teste realizado com sucesso ------------------");
     }
     
