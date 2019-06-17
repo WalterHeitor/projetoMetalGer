@@ -5,6 +5,11 @@
  */
 package View.Cadastro;
 
+import Controller.FerramentaDAO;
+import Model.EmprestimoFerramenta;
+import Model.Ferramenta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author walter heitor
@@ -59,6 +64,11 @@ public class TelaEmprestimoFerramenta extends javax.swing.JFrame {
 
         btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/plus_32px.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/cancel_32px.png"))); // NOI18N
         jButton3.setText("Excluir");
@@ -154,6 +164,27 @@ public class TelaEmprestimoFerramenta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        if(textDtEntrega.getDate().equals("")|| textDtSaida.getDate().equals("")|| 
+                textIdFerramenta.getText().trim().equals("")|| textIdentifcacaoFunc.getText().trim().equals("")){
+            JOptionPane.showInputDialog(this, "Um ou mais campos não foram inseridos !!");
+        }else {
+            
+            Ferramenta f = FerramentaDAO.getInstance().getById(Integer.parseInt(textIdFerramenta.getText()));
+            
+            EmprestimoFerramenta ef = new EmprestimoFerramenta(textDtEntrega.getDate(), textDtSaida.getDate(),
+            f, Integer.parseInt(textIdentifcacaoFunc.getText()));
+            
+            try {
+                EmprestimoFerramentaDAO.getInstance().persistence(ef);
+            } catch (Exception e) {
+                System.out.println("Os dados não foram inseridos");
+            }
+        }
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
