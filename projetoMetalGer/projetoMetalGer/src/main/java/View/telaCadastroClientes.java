@@ -354,6 +354,10 @@ public class telaCadastroClientes extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        limpar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    public void limpar (){
         textTipo.setText("");
         textNomeCliente.setText("");
         textRazao_social.setText("");
@@ -364,8 +368,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         textCidade.setText("");
         textCep.setText("");
         textTelefoneCliente.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
