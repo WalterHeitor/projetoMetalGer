@@ -5,9 +5,12 @@
  */
 package View.Cadastro;
 
+import Controller.EmprestimoFerramentaDAO;
 import Controller.FerramentaDAO;
+import Controller.FuncionarioDAO;
 import Model.EmprestimoFerramenta;
 import Model.Ferramenta;
+import Model.Funcionario;
 import javax.swing.JOptionPane;
 
 /**
@@ -173,12 +176,12 @@ public class TelaEmprestimoFerramenta extends javax.swing.JFrame {
         }else {
             
             Ferramenta f = FerramentaDAO.getInstance().getById(Integer.parseInt(textIdFerramenta.getText()));
+            Funcionario f1 = FuncionarioDAO.getInstance().getById(Integer.parseInt(textIdentifcacaoFunc.getText()));
+            EmprestimoFerramenta empr = new EmprestimoFerramenta(textDtEntrega.getDate(), textDtSaida.getDate(), f, f1);
             
-            EmprestimoFerramenta ef = new EmprestimoFerramenta(textDtEntrega.getDate(), textDtSaida.getDate(),
-            f, Integer.parseInt(textIdentifcacaoFunc.getText()));
             
             try {
-                EmprestimoFerramentaDAO.getInstance().persistence(ef);
+                EmprestimoFerramentaDAO.getInstance().merge(empr);
             } catch (Exception e) {
                 System.out.println("Os dados não foram inseridos");
             }
