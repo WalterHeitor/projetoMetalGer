@@ -47,11 +47,11 @@ public class OrdemServico implements Serializable {
     private Date dt_fim;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="dt_prevista")
-    private Date dt_Prevista;
+    private Date dt_prevista;
     @Column
     private String descricao_servico;
     @Column
-    private String statusServco;
+    private String statusservco;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Projetos.class)
     @JoinColumn(name = "id_projeto", nullable = true)
@@ -60,21 +60,21 @@ public class OrdemServico implements Serializable {
     public OrdemServico() {
     }
 
-    public OrdemServico(Date dt_inicio, Date dt_fim, Date dt_Prevista, String descricao_servico, String statusServco, Projetos projetos) {
+    public OrdemServico(Date dt_inicio, Date dt_fim, Date dt_prevista, String descricao_servico, String statusservco, Projetos projetos) {
         this.dt_inicio = dt_inicio;
         this.dt_fim = dt_fim;
-        this.dt_Prevista = dt_Prevista;
+        this.dt_prevista = dt_prevista;
         this.descricao_servico = descricao_servico;
-        this.statusServco = statusServco;
+        this.statusservco = statusservco;
         this.projetos = projetos;
     }
-    public OrdemServico(Date dt_inicio, Date dt_fim, Date dt_Prevista, String descricao_servico, String statusServco) {
+
+    public OrdemServico(Date dt_inicio, Date dt_fim, Date dt_prevista, String descricao_servico, String statusservco) {
         this.dt_inicio = dt_inicio;
         this.dt_fim = dt_fim;
-        this.dt_Prevista = dt_Prevista;
+        this.dt_prevista = dt_prevista;
         this.descricao_servico = descricao_servico;
-        this.statusServco = statusServco;
-        
+        this.statusservco = statusservco;
     }
 
     public Long getId_ordem_servico() {
@@ -101,12 +101,12 @@ public class OrdemServico implements Serializable {
         this.dt_fim = dt_fim;
     }
 
-    public Date getDt_Prevista() {
-        return dt_Prevista;
+    public Date getDt_prevista() {
+        return dt_prevista;
     }
 
-    public void setDt_Prevista(Date dt_Prevista) {
-        this.dt_Prevista = dt_Prevista;
+    public void setDt_prevista(Date dt_prevista) {
+        this.dt_prevista = dt_prevista;
     }
 
     public String getDescricao_servico() {
@@ -117,13 +117,15 @@ public class OrdemServico implements Serializable {
         this.descricao_servico = descricao_servico;
     }
 
-    public String getStatusServco() {
-        return statusServco;
+    public String getStatusservco() {
+        return statusservco;
     }
 
-    public void setStatusServco(String statusServco) {
-        this.statusServco = statusServco;
+    public void setStatusservco(String statusservco) {
+        this.statusservco = statusservco;
     }
+
+   
 
     public Projetos getProjetos() {
         return projetos;

@@ -303,7 +303,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 740, 600);
+        jPanel1.setBounds(0, 0, 810, 600);
 
         tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -321,7 +321,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 640, 760, 170);
 
-        setSize(new java.awt.Dimension(797, 862));
+        setSize(new java.awt.Dimension(921, 862));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
