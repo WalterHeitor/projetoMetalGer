@@ -83,7 +83,7 @@ public class GeraRelatorios {
         List listaOrdemServico = OrdemServicoDAO.getInstance().findAll();
         
         JasperReport jr =
-                JasperCompileManager.compileReport("C:/Users/walter heitor/Desktop/projetoMetalGer/projetoMetalGer/projetoMetalGer/src/main/java/Relatorios//relatorioOS.jrxml");
+                JasperCompileManager.compileReport("C:/Users/walter heitor/Desktop/projetoMetalGer/projetoMetalGer/projetoMetalGer/src/main/java/Relatorios//relatorioOrdemServico.jrxml");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(listaOrdemServico));
         JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/Users/walter heitor/Desktop/teste/reportOS.pdf");
         System.out.println("Relatorio gerado");

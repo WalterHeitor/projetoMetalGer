@@ -129,5 +129,12 @@ public class Pessoa implements Serializable  {
         }
         this.maoObraOrdemServicos.add(servico);
     }
+   
+   public void addProjetos(Projetos projetos){
+        if(this.projetoses == null){
+           this.projetoses = new HashSet<Projetos>();
+        }
+        this.projetoses.add(projetos);
+    }
     
 }

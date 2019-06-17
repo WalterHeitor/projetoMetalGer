@@ -46,7 +46,7 @@ public class TesteInsercaoTable {
       os.setProjetos(p);
       OrdemServicoDAO.getInstance().merge(os);
         System.out.println("----- Ordem Serviço inserido com sucesso ----"); 
-     Ferramenta frr = new Ferramenta(011, "Não emprestado", "Lixadeira 4 1/2 boch" , "001256", new Date(16,5,19), "manual", new Date(19,5,16), "010101", "itumbiara");
+     Ferramenta frr = new Ferramenta(012, "Não emprestado", "Lixadeira 4 1/2 boch" , "001256", new Date(16,5,19), "manual", new Date(19,5,16), "010101", "itumbiara");
      FerramentaDAO.getInstance().persist(frr);
         System.out.println("ferramenta inserido com sucesso");
         System.out.println("---------------- teste realizado com sucesso ------------------");
