@@ -103,13 +103,7 @@ public class TelaBuscaClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarProjetosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProjetosActionPerformed
-        // TODO add your handling code here:
-       /* Projetos p = new Projetos("itmbiara", "esteira", "esteira transportadora", "walter", "heitor", "oliveira", "tadeu");
-        ProjetosDAO.getInstance().persist(p);
-        Projetos p1 = new Projetos("santa helena", "esteira01", "esteira transportadora milho", "helio", "maria", "oliveira", "matheus");
-        ProjetosDAO.getInstance().persist(p1);
-        Projetos p2 = new Projetos("araporan", "elevador", "elevador transportadora milho", "joao", "clara", "oliveira", "marcos");
-        ProjetosDAO.getInstance().persist(p2);*/
+        
        
        
         List<Cliente> listaCliente = new ArrayList<>();
