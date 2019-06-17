@@ -63,6 +63,12 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
         jLabel5.setText("Status do serviço :");
 
         textStatusOS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aquardando Aprovação", "Executando", "Finalizada", "Entregue", "Parada", "Atrazado", " " }));
+        textStatusOS.setToolTipText("");
+        textStatusOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textStatusOSActionPerformed(evt);
+            }
+        });
 
         btnCadastrarOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/save_32px.png"))); // NOI18N
         btnCadastrarOS.setText("Cadastrar");
@@ -84,6 +90,11 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/housekeeping_32px.png"))); // NOI18N
         jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,6 +208,24 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
         new TelaBuscaProjetos().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        limpar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void textStatusOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textStatusOSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textStatusOSActionPerformed
+
+    public void limpar(){
+        textDtInicio.setDate(null);
+        textDtFim.setDate(null);
+        textDtPrevista.setDate(null);
+        textDescricao.setText("");
+        textIdProjeto.setText("");
+        textStatusOS.setSelectedIndex(0);
+        
+    }
     /**
      * @param args the command line arguments
      */
