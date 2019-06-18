@@ -68,7 +68,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        btnListar_ = new javax.swing.JButton();
+        btn_buscar_cli_ = new javax.swing.JButton();
         textId = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         btn_alterar_ = new javax.swing.JButton();
@@ -157,10 +157,10 @@ public class telaCadastroClientes extends javax.swing.JFrame {
             }
         });
 
-        btnListar_.setText("listar");
-        btnListar_.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar_cli_.setText("Buscar");
+        btn_buscar_cli_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListar_ActionPerformed(evt);
+                btn_buscar_cli_ActionPerformed(evt);
             }
         });
 
@@ -182,7 +182,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnListar_)
+                        .addComponent(btn_buscar_cli_)
                         .addGap(32, 32, 32)
                         .addComponent(jButton3)
                         .addGap(63, 63, 63)
@@ -326,7 +326,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(btnCadastrar)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListar_)
+                    .addComponent(btn_buscar_cli_)
                     .addComponent(btn_alterar_))
                 .addGap(64, 64, 64))
         );
@@ -367,11 +367,11 @@ public class telaCadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
-    private void btnListar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar_ActionPerformed
+    private void btn_buscar_cli_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_cli_ActionPerformed
                
         listarCliente();
         
-    }//GEN-LAST:event_btnListar_ActionPerformed
+    }//GEN-LAST:event_btn_buscar_cli_ActionPerformed
     public void listarCliente(){
         ConsultaCliente tlConsClien = new ConsultaCliente(new JFrame(), true);
         tlConsClien.setVisible(true);
@@ -444,8 +444,8 @@ public class telaCadastroClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnListar_;
     private javax.swing.JButton btn_alterar_;
+    private javax.swing.JButton btn_buscar_cli_;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

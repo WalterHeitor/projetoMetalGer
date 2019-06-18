@@ -7,10 +7,9 @@ package View.Cadastro;
 
 import Controller.InsumoDAO;
 import Model.Insumo;
-import java.util.ArrayList;
-import java.util.List;
+import View.formDialog.ConsultaInsumo;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,27 +23,7 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
     public telaCadastroInsumo() {
         initComponents();
     }
-    public void popularTabelaInsumo(List<Insumo> plistaInsumo){
-        DefaultTableModel modeloTabela = new DefaultTableModel();
-        this.tabelaInsumo.setModel(modeloTabela);
-        modeloTabela.addColumn("Id Insumo");
-        modeloTabela.addColumn("Codigo");
-        modeloTabela.addColumn("Descrição");
-        modeloTabela.addColumn("Unidade");
-
-        
-        for(Insumo insumo : plistaInsumo){
-            modeloTabela.addRow( new Object[]{
-                insumo.getId_insumo(),
-                insumo.getCod_insumo(),
-                insumo.getDescricao_produto(),
-                insumo.getUnidade(),
-
-            }
-            
-            );
-        }
-    }
+    Insumo i = new Insumo();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,12 +37,12 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         textDescInsumo = new javax.swing.JTextField();
         textUnidade = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_cadastrar_insumo_ = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         textCodProduto = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaInsumo = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        btn_buscar_ = new javax.swing.JButton();
+        btn_alterar_ = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,35 +50,35 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
 
         jLabel2.setText("Unidade :");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/save_32px.png"))); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_cadastrar_insumo_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/save_32px.png"))); // NOI18N
+        btn_cadastrar_insumo_.setText("Cadastrar");
+        btn_cadastrar_insumo_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_cadastrar_insumo_ActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Codigo produto:");
-
-        tabelaInsumo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id Insumo", "Codigo", "Descrição", "Unidade"
-            }
-        ));
-        jScrollPane1.setViewportView(tabelaInsumo);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/housekeeping_32px.png"))); // NOI18N
         jButton2.setText("Limpar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        btn_buscar_.setText("Buscar");
+        btn_buscar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscar_ActionPerformed(evt);
+            }
+        });
+
+        btn_alterar_.setText("Alterar");
+        btn_alterar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alterar_ActionPerformed(evt);
             }
         });
 
@@ -110,7 +89,6 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,7 +104,11 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
                         .addGap(238, 238, 238))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btn_alterar_)
+                        .addGap(31, 31, 31)
+                        .addComponent(btn_buscar_)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_cadastrar_insumo_)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)))
                 .addContainerGap())
@@ -146,18 +128,18 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
                     .addComponent(textUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
+                    .addComponent(btn_cadastrar_insumo_)
+                    .addComponent(jButton2)
+                    .addComponent(btn_buscar_)
+                    .addComponent(btn_alterar_))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(716, 494));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_cadastrar_insumo_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrar_insumo_ActionPerformed
         // TODO add your handling code here:
         if(textDescInsumo.getText().trim().equals("")||textCodProduto.getText().trim().equals("")||textUnidade.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Um ou mais Campos não foram inseridos!!!");
@@ -171,18 +153,41 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
                 System.out.println("Os dados nao foram inseridos");
             }
             
-        }
-        List<Insumo> listaInsumo = new ArrayList();
-        listaInsumo = InsumoDAO.getInstance().findAll();
-        this.popularTabelaInsumo(listaInsumo);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }      
+    }//GEN-LAST:event_btn_cadastrar_insumo_ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         limpar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btn_buscar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_ActionPerformed
+        // TODO add your handling code here:
+        buscar();
+    }//GEN-LAST:event_btn_buscar_ActionPerformed
+
+    private void btn_alterar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterar_ActionPerformed
+        // TODO add your handling code here:
+        alterar();
+    }//GEN-LAST:event_btn_alterar_ActionPerformed
+   
+    public void alterar(){
+        i.setDescricao_produto(textDescInsumo.getText());
+        i.setCod_insumo(Integer.parseInt(textCodProduto.getText()));
+        i.setUnidade(Integer.parseInt(textUnidade.getText()));
+        InsumoDAO.getInstance().merge(i);
+        
+    }
+    public void buscar(){
+        ConsultaInsumo ci = new ConsultaInsumo(new JFrame(), true);
+        ci.setVisible(true);
+        if(ci.isConfirm()){
+            i=ci.getI();
+            textDescInsumo.setText(i.getDescricao_produto());
+            textCodProduto.setText(Integer.toString(i.getCod_insumo()));
+            textUnidade.setText(Integer.toString(i.getUnidade()));
+        }
+    }
     public void limpar(){
         textCodProduto.setText("");
         textDescInsumo.setText("");
@@ -224,13 +229,13 @@ public class telaCadastroInsumo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_alterar_;
+    private javax.swing.JButton btn_buscar_;
+    private javax.swing.JButton btn_cadastrar_insumo_;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaInsumo;
     private javax.swing.JTextField textCodProduto;
     private javax.swing.JTextField textDescInsumo;
     private javax.swing.JTextField textUnidade;
