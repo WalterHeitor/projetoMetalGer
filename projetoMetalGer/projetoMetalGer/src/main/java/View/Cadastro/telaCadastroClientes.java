@@ -313,7 +313,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,7 +332,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 810, 630);
+        jPanel1.setBounds(0, 0, 810, 640);
 
         setSize(new java.awt.Dimension(921, 738));
         setLocationRelativeTo(null);
@@ -368,11 +368,11 @@ public class telaCadastroClientes extends javax.swing.JFrame {
 
     
     private void btnListar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar_ActionPerformed
-        // TODO add your handling code here:
-//        listarClientes();
-//        tabelaClientes.getSelectedRows();
-//        System.out.println("linha selecionada "+tabelaClientes.getSelectedRows());
+               
+        listarCliente();
         
+    }//GEN-LAST:event_btnListar_ActionPerformed
+    public void listarCliente(){
         ConsultaCliente tlConsClien = new ConsultaCliente(new JFrame(), true);
         tlConsClien.setVisible(true);
         if(tlConsClien.isConfirm()){
@@ -384,8 +384,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
             textFantazia.setText(c.getFantasia());
             textTipo.setText(Integer.toString(c.getTipo()));          
         }
-    }//GEN-LAST:event_btnListar_ActionPerformed
-
+    }
     private void btn_alterar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterar_ActionPerformed
         // TODO add your handling code here:
         c.setNome(textNomeCliente.getText());

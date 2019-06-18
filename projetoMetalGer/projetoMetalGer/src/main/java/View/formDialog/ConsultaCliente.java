@@ -21,39 +21,37 @@ public class ConsultaCliente extends javax.swing.JDialog {
     /**
      * Creates new form ConsultaCliente
      */
-   private Cliente ctl;
-   private boolean confirm = false;
-   private int id_cli;
-   
-   
-   
-   
-    public void popularTabelaClientes(List<Cliente> plistaCliente ){
-                DefaultTableModel modeloTabela = new DefaultTableModel();
-                this.tabelaClientes.setModel(modeloTabela);
-                modeloTabela.addColumn("ID");
-                modeloTabela.addColumn("Nome");
-                modeloTabela.addColumn("CNPJ");
-                modeloTabela.addColumn("FANTASIA");
-                
-                for (Cliente cliente : plistaCliente){
-                    modeloTabela.addRow(
-                            new Object[]{
-                            cliente.getId_pessoa(),
-                            cliente.getNome(),
-                            cliente.getCnpj(),
-                            cliente.getFantasia()
-                            }
-                    );
-                }
-                
-                
-            }
-    public void listarClientes(){
-        List<Cliente> listaCliente = new ArrayList();
-            listaCliente = ClienteDAO.getInstance().findAll();  
-            this.popularTabelaClientes(listaCliente);
+    private Cliente ctl;
+    private boolean confirm = false;
+    private int id_cli;
+
+    public void popularTabelaClientes(List<Cliente> plistaCliente) {
+        DefaultTableModel modeloTabela = new DefaultTableModel();
+        this.tabelaClientes.setModel(modeloTabela);
+        modeloTabela.addColumn("ID");
+        modeloTabela.addColumn("Nome");
+        modeloTabela.addColumn("CNPJ");
+        modeloTabela.addColumn("FANTASIA");
+
+        for (Cliente cliente : plistaCliente) {
+            modeloTabela.addRow(
+                    new Object[]{
+                        cliente.getId_pessoa(),
+                        cliente.getNome(),
+                        cliente.getCnpj(),
+                        cliente.getFantasia()
+                    }
+            );
+        }
+
     }
+
+    public void listarClientes() {
+        List<Cliente> listaCliente = new ArrayList();
+        listaCliente = ClienteDAO.getInstance().findAll();
+        this.popularTabelaClientes(listaCliente);
+    }
+
     public ConsultaCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -75,6 +73,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaClientes = new javax.swing.JTable();
         btnListar_ = new javax.swing.JButton();
+        btn_excliuir_ = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -119,6 +118,13 @@ public class ConsultaCliente extends javax.swing.JDialog {
             }
         });
 
+        btn_excliuir_.setText("Excluir");
+        btn_excliuir_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excliuir_ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,7 +141,9 @@ public class ConsultaCliente extends javax.swing.JDialog {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(textNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(31, 31, 31)
-                            .addComponent(btnListar_))
+                            .addComponent(btnListar_)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn_excliuir_))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -147,7 +155,8 @@ public class ConsultaCliente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListar_))
+                    .addComponent(btnListar_)
+                    .addComponent(btn_excliuir_))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -182,13 +191,13 @@ public class ConsultaCliente extends javax.swing.JDialog {
     public void setId_cli(int id_cli) {
         this.id_cli = id_cli;
     }
-    
-    
+
+
     private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
         // TODO add your handling code here:
         //CLIK DO MAUSE
-        if(tabelaClientes.getSelectedRow() != -1){
-            
+        if (tabelaClientes.getSelectedRow() != -1) {
+
             ctl = ClienteDAO.getInstance().getById((int) tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0));
             textNomeCli.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
         }
@@ -197,8 +206,8 @@ public class ConsultaCliente extends javax.swing.JDialog {
     private void btnListar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar_ActionPerformed
         // TODO add your handling code here:
         listarClientes();
-        tabelaClientes.getSelectedRows();       
-        System.out.println("linha selecionada "+tabelaClientes.getSelectedRows());
+        tabelaClientes.getSelectedRows();
+        System.out.println("linha selecionada " + tabelaClientes.getSelectedRows());
     }//GEN-LAST:event_btnListar_ActionPerformed
 
     private void btn_cancelar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelar_ActionPerformed
@@ -210,14 +219,36 @@ public class ConsultaCliente extends javax.swing.JDialog {
     private void btn_confirmar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmar_ActionPerformed
         // TODO add your handling code here:
         int id_cli = tabelaClientes.getSelectedRow();
-        if(id_cli >= 0){
-            ctl=ClienteDAO.getInstance().getById((int) tabelaClientes.getValueAt(id_cli, 0));
+        if (id_cli >= 0) {
+            ctl = ClienteDAO.getInstance().getById((int) tabelaClientes.getValueAt(id_cli, 0));
             setConfirm(true);
             dispose();
-        }else{
-            JOptionPane.showConfirmDialog(null, "selecione o cliente","erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showConfirmDialog(null, "selecione o cliente", "erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_confirmar_ActionPerformed
+
+    private void btn_excliuir_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excliuir_ActionPerformed
+        // TODO add your handling code here:
+        
+        if (JOptionPane.showConfirmDialog(this, "Deseja realmente remover", "Confirmação",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+                == JOptionPane.YES_OPTION) {
+            int id_cli = tabelaClientes.getSelectedRow();
+            if (id_cli >= 0) {
+                ctl = ClienteDAO.getInstance().getById((int) tabelaClientes.getValueAt(id_cli, 0));
+                System.out.println("id cliente :"+ ctl.getId_pessoa());
+                int n = (int) ctl.getId_pessoa();
+                System.out.println("id e --"+n);
+               // ClienteDAO.getInstance().removeById((int) tabelaClientes.getValueAt(id_cli, 0));
+                ClienteDAO.getInstance().remove(ctl);
+                setConfirm(true);
+                dispose();
+            } else {
+                JOptionPane.showConfirmDialog(null, "selecione o cliente", "erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btn_excliuir_ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,6 +296,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
     private javax.swing.JButton btnListar_;
     private javax.swing.JButton btn_cancelar_;
     private javax.swing.JButton btn_confirmar_;
+    private javax.swing.JButton btn_excliuir_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaClientes;
