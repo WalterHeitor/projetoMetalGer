@@ -27,83 +27,26 @@ public class TelaBuscaEmpregado extends javax.swing.JFrame {
     public void popularTabelaFuncionario(List<Funcionario> flistaFuncionario){
         DefaultTableModel modeloTabela = new DefaultTableModel();
         this.tabelaFuncionario.setModel(modeloTabela);
-        modeloTabela.addColumn("Tipo");
         modeloTabela.addColumn("Nome");
-        modeloTabela.addColumn("Pai");
-        modeloTabela.addColumn("Mae");
-        modeloTabela.addColumn("CTPS");
-        modeloTabela.addColumn("reservista");
-        modeloTabela.addColumn("reservista_categoria");
-        modeloTabela.addColumn("tituloEleitor");
         modeloTabela.addColumn("RG");
-        modeloTabela.addColumn("emissaoRg");
-        modeloTabela.addColumn("orgaoRg");
         modeloTabela.addColumn("cpf");
-        modeloTabela.addColumn("pis");
-        modeloTabela.addColumn("dataPis");
-        modeloTabela.addColumn("localNascimento");
         modeloTabela.addColumn("dt_nasc");
         modeloTabela.addColumn("estado_civil");
         modeloTabela.addColumn("escolaridade");
-        modeloTabela.addColumn("pele");
-        modeloTabela.addColumn("peso");
-        modeloTabela.addColumn("cabelo");
-        modeloTabela.addColumn("defeitos");
-        modeloTabela.addColumn("ex_admissional");
-        modeloTabela.addColumn("cod_afastamento");
-        modeloTabela.addColumn("dataAdmissao");
-        modeloTabela.addColumn("dataFgts");
         modeloTabela.addColumn("cargo atual");
-        modeloTabela.addColumn("tipo salario");
-        modeloTabela.addColumn("local_trabalho");
-        modeloTabela.addColumn("membro_Cipa");
-        modeloTabela.addColumn("dt_saida_func");
-        modeloTabela.addColumn("ex_admissional");
-        modeloTabela.addColumn("ferias periodo gozo");
-        modeloTabela.addColumn("alteracao_salarial");
-        modeloTabela.addColumn("contribuicao_sindical");
-        modeloTabela.addColumn("movimento afastamento");
-        modeloTabela.addColumn("anotacoes gerais");
+        modeloTabela.addColumn("salario atual");
         
         for(Funcionario f :flistaFuncionario){
             modeloTabela.addRow(new Object[]{
-                f.getTipo(),
                 f.getNome(),
-                f.getPai_func(),
-                f.getMae_func(),
-                f.getCart_profissional_serie_func(),
-                f.getCart_reservista_func(),
                 f.getCart_resrvis_categoria_func(),
-                f.getTitulo_eleitor_func(),
                 f.getCart_identidade_func(),
-                f.getEmissao_cart_identidade(),
-                f.getOrgao_emissorcart_identidade_func(),
                 f.getCpf_func(),
-                f.getPis_func(),
-                f.getDt_pis_func(),
-                f.getLocal_nasc_func(),
                 f.getDt_nasc_func(),
                 f.getEstado_civil_func(),
                 f.getGrau_instrucao_func(),
-                f.getPele_func(),
-                f.getPeso_func(),
-                f.getCabelo_func(),
-                f.getDefeitos_func(),
-                f.getEx_admicional(),
-                f.getDt_admicao(),
-                f.getDt_fgts(),
                 f.getCargo_atual(),
-                f.getTipo_salario(),
-                f.getLocal_trabalho(),
-                f.getMembro_cipa(),
-                f.getDt_saida_func(),
-                f.getEx_admicional(),
-                f.getFerias_periodo_gozo_func(),
-                f.getAlteracao_salario_func(),
-                f.getContribuicao_sindical_func(),
-                f.getMovimento_afastamento_func(),
-                f.getAnotacoes_gerais_func()
-                
+                f.getAlteracao_salario_func()
             });
         }
     }

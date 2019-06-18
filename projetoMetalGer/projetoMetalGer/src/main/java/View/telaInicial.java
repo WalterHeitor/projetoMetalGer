@@ -9,6 +9,10 @@ import View.Cadastro.telaCadastroClientes;
 import View.Cadastro.TelaCadastroEmpregado;
 import Controller.ProjetosDAO;
 import Util.GeraRelatorios;
+import View.Cadastro.TelaCadasroProjeto;
+import View.Cadastro.TelaCadastroOrdemServico;
+import View.Cadastro.TelaEmprestimoFerramenta;
+import View.Cadastro.TelaOrdemServicoFuncionario;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +52,10 @@ public class telaInicial extends javax.swing.JFrame {
         MenuCadFuncionarios = new javax.swing.JMenuItem();
         MenuCadClientes = new javax.swing.JMenuItem();
         MenuCadFerramentas = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         Relatorios = new javax.swing.JMenu();
         MenuRelatorioFuncionario_ = new javax.swing.JMenuItem();
         MenuRelatorioCliente_ = new javax.swing.JMenuItem();
@@ -84,6 +92,38 @@ public class telaInicial extends javax.swing.JFrame {
             }
         });
         MenuCadastro.add(MenuCadFerramentas);
+
+        jMenuItem1.setText("Projeto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MenuCadastro.add(jMenuItem1);
+
+        jMenuItem2.setText("OrdemServico");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        MenuCadastro.add(jMenuItem2);
+
+        jMenuItem3.setText("EmprestimoFerramenta");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        MenuCadastro.add(jMenuItem3);
+
+        jMenuItem4.setText("FuncionarioOrdemServico");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        MenuCadastro.add(jMenuItem4);
 
         jMenuBar1.add(MenuCadastro);
 
@@ -301,6 +341,27 @@ public class telaInicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenuRelatorioProjetoClientesActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        TelaCadasroProjeto cp = new TelaCadasroProjeto();
+        cp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new TelaCadastroOrdemServico().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        new TelaEmprestimoFerramenta().setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        new TelaOrdemServicoFuncionario().setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     
     public void GerarRelatorioProjetoCliente()throws JRException{
         System.out.println("gerando relatorio ");
@@ -361,5 +422,9 @@ public class telaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu Relatorios;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

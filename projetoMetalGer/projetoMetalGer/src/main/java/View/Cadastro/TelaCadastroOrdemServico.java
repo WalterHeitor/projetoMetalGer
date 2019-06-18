@@ -9,6 +9,7 @@ import Controller.OrdemServicoDAO;
 import Controller.ProjetosDAO;
 import Model.OrdemServico;
 import Model.Projetos;
+import View.TelaBuscaOrdemServico;
 import View.TelaBuscaProjetos;
 import javax.swing.JOptionPane;
 
@@ -49,6 +50,7 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
         textIdProjeto = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnOS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Ordem de Serviço");
@@ -97,6 +99,14 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
             }
         });
 
+        btnOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
+        btnOS.setText("Listar Ordem Servico");
+        btnOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOSActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,6 +143,8 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnOS)
+                        .addGap(32, 32, 32)
                         .addComponent(btnCadastrarOS)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)))
@@ -162,7 +174,8 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(textIdProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(btnOS))
                 .addContainerGap(370, Short.MAX_VALUE))
         );
 
@@ -218,6 +231,12 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textStatusOSActionPerformed
 
+    private void btnOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOSActionPerformed
+        // TODO add your handling code here:
+        new TelaBuscaOrdemServico().setVisible(true);
+        
+    }//GEN-LAST:event_btnOSActionPerformed
+
     public void limpar(){
         textDtInicio.setDate(null);
         textDtFim.setDate(null);
@@ -264,6 +283,7 @@ public class TelaCadastroOrdemServico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarOS;
+    private javax.swing.JButton btnOS;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

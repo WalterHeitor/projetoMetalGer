@@ -11,6 +11,7 @@ import Controller.FuncionarioDAO;
 import Model.EmprestimoFerramenta;
 import Model.Ferramenta;
 import Model.Funcionario;
+import View.TelaBuscaEmprestimoFerramenta;
 import javax.swing.JOptionPane;
 
 /**
@@ -78,9 +79,19 @@ public class TelaEmprestimoFerramenta extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
         jButton4.setText("buscar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/housekeeping_32px.png"))); // NOI18N
         jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -189,6 +200,22 @@ public class TelaEmprestimoFerramenta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        limpar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new TelaBuscaEmprestimoFerramenta().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public void limpar(){
+        textDtEntrega.setDate(null);
+        textDtSaida.setDate(null);
+        textIdFerramenta.setText("");
+        textIdentifcacaoFunc.setText("");
+    }
     /**
      * @param args the command line arguments
      */

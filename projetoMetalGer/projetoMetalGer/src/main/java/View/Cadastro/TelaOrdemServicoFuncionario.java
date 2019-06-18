@@ -14,6 +14,7 @@ import Model.FuncionarioOrdemServico;
 import Model.Insumo;
 import Model.MaoObraOrdemServico;
 import Model.OrdemServico;
+import View.TelaBuscaFuncionarioOrdemServico;
 
 /**
  *
@@ -76,6 +77,7 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         btnAddInsumo = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -271,6 +273,19 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/housekeeping_32px.png"))); // NOI18N
         jButton1.setText("Limpar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
+        jButton2.setText("buscar OrdemServicoFuncionario");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -280,6 +295,8 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(75, 75, 75)
                         .addComponent(btnCadastrar)
                         .addGap(44, 44, 44)
                         .addComponent(jButton1))
@@ -332,7 +349,8 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -384,6 +402,31 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
         moos.setQtd_insumo(Float.parseFloat(textQtdUtilizada.getText().trim()));
     }//GEN-LAST:event_btnAddInsumoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        limpar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new TelaBuscaFuncionarioOrdemServico().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void limpar(){
+        textDescricaoMaoObra.setText("");
+        textDescricaoServico.setText("");
+        textDtFim.setDate(null);
+        textDtInicio.setDate(null);
+        textDtPrevistaOSF.setDate(null);
+        textHrFim.setText("");
+        textHrInicio.setText("");
+        textHrTrab.setText("");
+        textIdFunc.setText("");
+        textIdInsumo.setText("");
+        textOrdemServico.setText("");
+        textQtdUtilizada.setText("");
+        textStatusOS.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */
@@ -425,6 +468,7 @@ public class TelaOrdemServicoFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnSalvarOSF;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
