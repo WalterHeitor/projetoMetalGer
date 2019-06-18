@@ -74,6 +74,8 @@ public class ConsultaCliente extends javax.swing.JDialog {
         tabelaClientes = new javax.swing.JTable();
         btnListar_ = new javax.swing.JButton();
         btn_excliuir_ = new javax.swing.JButton();
+        textID = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -125,6 +127,8 @@ public class ConsultaCliente extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setText("ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,16 +140,23 @@ public class ConsultaCliente extends javax.swing.JDialog {
                         .addComponent(btn_cancelar_)
                         .addGap(69, 69, 69)
                         .addComponent(btn_confirmar_))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(textNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(btnListar_)
-                            .addGap(18, 18, 18)
-                            .addComponent(btn_excliuir_))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnListar_)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_excliuir_)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(9, 9, 9)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +167,9 @@ public class ConsultaCliente extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnListar_)
-                    .addComponent(btn_excliuir_))
+                    .addComponent(btn_excliuir_)
+                    .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -200,6 +213,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
 
             ctl = ClienteDAO.getInstance().getById((int) tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0));
             textNomeCli.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
+            textID.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
         }
     }//GEN-LAST:event_tabelaClientesMouseClicked
 
@@ -240,8 +254,9 @@ public class ConsultaCliente extends javax.swing.JDialog {
                 System.out.println("id cliente :"+ ctl.getId_pessoa());
                 int n = (int) ctl.getId_pessoa();
                 System.out.println("id e --"+n);
-               // ClienteDAO.getInstance().removeById((int) tabelaClientes.getValueAt(id_cli, 0));
-                ClienteDAO.getInstance().remove(ctl);
+             //   ClienteDAO.getInstance().removeById(n);
+                ClienteDAO.getInstance().removeById(Integer.parseInt(textID.getText()));
+                //ClienteDAO.getInstance().remove(ctl);
                 setConfirm(true);
                 dispose();
             } else {
@@ -298,8 +313,10 @@ public class ConsultaCliente extends javax.swing.JDialog {
     private javax.swing.JButton btn_confirmar_;
     private javax.swing.JButton btn_excliuir_;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaClientes;
+    private javax.swing.JTextField textID;
     private javax.swing.JTextField textNomeCli;
     // End of variables declaration//GEN-END:variables
 }
