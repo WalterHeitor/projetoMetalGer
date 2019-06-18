@@ -24,7 +24,8 @@ public class ConsultaCliente extends javax.swing.JDialog {
    private Cliente ctl;
    private boolean confirm = false;
    private int id_cli;
-    
+   
+   
    
    
     public void popularTabelaClientes(List<Cliente> plistaCliente ){
@@ -68,7 +69,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        textNomeCli = new javax.swing.JTextField();
         btn_cancelar_ = new javax.swing.JButton();
         btn_confirmar_ = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -78,8 +79,6 @@ public class ConsultaCliente extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Digite o Cliente");
-
-        jTextField1.setText("jTextField1");
 
         btn_cancelar_.setText("Cancelar");
         btn_cancelar_.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +133,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(31, 31, 31)
                             .addComponent(btnListar_))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -147,7 +146,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnListar_))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,13 +190,14 @@ public class ConsultaCliente extends javax.swing.JDialog {
         if(tabelaClientes.getSelectedRow() != -1){
             
             ctl = ClienteDAO.getInstance().getById((int) tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0));
+            textNomeCli.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
         }
     }//GEN-LAST:event_tabelaClientesMouseClicked
 
     private void btnListar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar_ActionPerformed
         // TODO add your handling code here:
         listarClientes();
-        tabelaClientes.getSelectedRows();
+        tabelaClientes.getSelectedRows();       
         System.out.println("linha selecionada "+tabelaClientes.getSelectedRows());
     }//GEN-LAST:event_btnListar_ActionPerformed
 
@@ -267,7 +267,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
     private javax.swing.JButton btn_confirmar_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabelaClientes;
+    private javax.swing.JTextField textNomeCli;
     // End of variables declaration//GEN-END:variables
 }
