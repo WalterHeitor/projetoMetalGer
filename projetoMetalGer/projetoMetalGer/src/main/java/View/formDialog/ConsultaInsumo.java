@@ -48,6 +48,7 @@ public class ConsultaInsumo extends javax.swing.JDialog {
         textID = new javax.swing.JTextField();
         btn_confirmar_ = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
+        btn_excluir_insumo_ = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,6 +96,13 @@ public class ConsultaInsumo extends javax.swing.JDialog {
             }
         });
 
+        btn_excluir_insumo_.setText("Excluir");
+        btn_excluir_insumo_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluir_insumo_ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,16 +118,12 @@ public class ConsultaInsumo extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textDescInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(302, 302, 302)
-                                .addComponent(btnListar_insumo_))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_excluir_insumo_)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -127,6 +131,10 @@ public class ConsultaInsumo extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_confirmar_)
                 .addGap(48, 48, 48))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnListar_insumo_)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,8 +145,9 @@ public class ConsultaInsumo extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_excluir_insumo_))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListar_insumo_)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,6 +216,32 @@ public class ConsultaInsumo extends javax.swing.JDialog {
             JOptionPane.showConfirmDialog(null, "selecione o insumo", "erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_confirmar_ActionPerformed
+
+    private void btn_excluir_insumo_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluir_insumo_ActionPerformed
+        // TODO add your handling code here:
+        excluir();
+    }//GEN-LAST:event_btn_excluir_insumo_ActionPerformed
+   
+    public void excluir(){
+        if (JOptionPane.showConfirmDialog(this, "Deseja realmente remover", "Confirmação",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+                == JOptionPane.YES_OPTION) {
+            int id_ins = tabelaInsumo.getSelectedRow();
+            if (id_ins >= 0) {
+                i = InsumoDAO.getInstance().getById((int) tabelaInsumo.getValueAt(id_ins, 0));
+                System.out.println("id cliente :"+ i.getId_insumo());
+                int n = (int) i.getId_insumo();
+                System.out.println("id e --"+n);
+               //InsumoDAO.getInstance().removeById(n);
+               // InsumoDAO.getInstance().removeById(Integer.parseInt(textID.getText()));
+                InsumoDAO.getInstance().remove(i);
+                setConfirm(true);
+                dispose();
+            } else {
+                JOptionPane.showConfirmDialog(null, "selecione o cliente", "erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
     public void listarInsumo(){
         List<Insumo> listaInsumo = new ArrayList<>();
         listaInsumo = InsumoDAO.getInstance().findAll();
@@ -279,6 +314,7 @@ public class ConsultaInsumo extends javax.swing.JDialog {
     private javax.swing.JButton btnListar_insumo_;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_confirmar_;
+    private javax.swing.JButton btn_excluir_insumo_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
