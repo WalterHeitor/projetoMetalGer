@@ -10,8 +10,10 @@ import Model.Cliente;
 import Model.Enderecos;
 import Model.Telefone;
 import View.TelaBuscaClientes;
+import View.formDialog.ConsultaCliente;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -402,9 +404,21 @@ public class telaCadastroClientes extends javax.swing.JFrame {
     }
     private void btnListar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar_ActionPerformed
         // TODO add your handling code here:
-        listarClientes();
-        tabelaClientes.getSelectedRows();
-        System.out.println("linha selecionada "+tabelaClientes.getSelectedRows());
+//        listarClientes();
+//        tabelaClientes.getSelectedRows();
+//        System.out.println("linha selecionada "+tabelaClientes.getSelectedRows());
+        
+        ConsultaCliente tlConsClien = new ConsultaCliente(new JFrame(), true);
+        tlConsClien.setVisible(true);
+        if(tlConsClien.isConfirm()){
+            Cliente c = tlConsClien.getCtl();
+            textId.setText(Integer.toString( c.getId_pessoa()));
+            textNomeCliente.setText(c.getNome());
+            textRazao_social.setText(c.getRazao_social());
+            textCnpj.setText(c.getCnpj());
+            textFantazia.setText(c.getFantasia());
+            
+        }
     }//GEN-LAST:event_btnListar_ActionPerformed
 
     private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked

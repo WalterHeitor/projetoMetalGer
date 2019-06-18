@@ -9,7 +9,6 @@ import Controller.ClienteDAO;
 import Model.Cliente;
 import Model.Enderecos;
 import Model.Telefone;
-import View.TelaBuscaClientes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
