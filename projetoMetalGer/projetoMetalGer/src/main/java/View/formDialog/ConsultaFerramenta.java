@@ -60,7 +60,7 @@ public class ConsultaFerramenta extends javax.swing.JDialog {
     public void listarFerramenta() {
         List<Ferramenta> listaFerramenta = new ArrayList();
         listaFerramenta = FerramentaDAO.getInstance().findAll();
-        this.popularTabelaFerramenta(listaFerramenta);
+        this.popularTabelaFerramentas(listaFerramenta);
     }
 
     public ConsultaFerramenta(java.awt.Frame parent, boolean modal) {

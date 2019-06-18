@@ -37,7 +37,7 @@ import org.hibernate.annotations.Parameter;
 public class Ferramenta implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private Long id_ferramenta;
+    private int id_ferramenta;
     
     @Column(unique=true, nullable=false,
          insertable=true, updatable=true)
@@ -96,11 +96,11 @@ public class Ferramenta implements Serializable {
         this.emprestimo_ferramenta = emprestimo_ferramenta;
     }
 
-    public Long getId_ferramenta() {
+    public int getId_ferramenta() {
         return id_ferramenta;
     }
 
-    public void setId_ferramenta(Long id_ferramenta) {
+    public void setId_ferramenta(int id_ferramenta) {
         this.id_ferramenta = id_ferramenta;
     }
 
