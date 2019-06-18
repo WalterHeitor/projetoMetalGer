@@ -5,9 +5,8 @@
  */
 package View.formDialog;
 
-import Controller.ClienteDAO;
-import Controller.InsumoDAO;
-import Model.Insumo;
+import Controller.PedidoCompraDAO;
+import Model.PedidoCompra;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -27,9 +26,9 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
         initComponents();
     }
 
-    private Insumo i;
+    private PedidoCompra pc;
     private boolean confirm = false;
-    private int id_ins;
+    private int id_pc;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,9 +39,9 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaInsumo = new javax.swing.JTable();
+        tabelaPedidoCompra = new javax.swing.JTable();
         btnListar_insumo_ = new javax.swing.JButton();
-        textDescInsumo = new javax.swing.JTextField();
+        textDataEmicao = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textID = new javax.swing.JTextField();
@@ -52,24 +51,24 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tabelaInsumo.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaPedidoCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Insumo", "Codigo", "Descrição", "Unidade"
+                "Id PedidoCompra", "Id Projeto", "Id Cliente", "DataEmicao", "ValorTotal"
             }
         ));
-        tabelaInsumo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaPedidoCompra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaInsumoMouseClicked(evt);
+                tabelaPedidoCompraMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelaInsumo);
+        jScrollPane1.setViewportView(tabelaPedidoCompra);
 
         btnListar_insumo_.setText("Listar");
         btnListar_insumo_.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +77,7 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Descrição do Produto :");
+        jLabel1.setText("Data Emição:");
 
         jLabel2.setText("ID:");
 
@@ -116,7 +115,7 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textDescInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                        .addComponent(textDataEmicao, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
@@ -141,7 +140,7 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(textDescInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textDataEmicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -161,12 +160,12 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public Insumo getI() {
-        return i;
+    public PedidoCompra getPc() {
+        return pc;
     }
 
-    public void setI(Insumo i) {
-        this.i = i;
+    public void setPc(PedidoCompra pc) {
+        this.pc = pc;
     }
 
     public boolean isConfirm() {
@@ -177,28 +176,28 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
         this.confirm = confirm;
     }
 
-    public int getId_ins() {
-        return id_ins;
+    public int getId_pc() {
+        return id_pc;
     }
 
-    public void setId_ins(int id_ins) {
-        this.id_ins = id_ins;
+    public void setId_pc(int id_pc) {
+        this.id_pc = id_pc;
     }
+    
     
     private void btnListar_insumo_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar_insumo_ActionPerformed
         // TODO add your handling code here:
-        listarInsumo();
+        listarPedidoCompra();
     }//GEN-LAST:event_btnListar_insumo_ActionPerformed
 
-    private void tabelaInsumoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaInsumoMouseClicked
+    private void tabelaPedidoCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaPedidoCompraMouseClicked
         // TODO add your handling code here:
-        if (tabelaInsumo.getSelectedRow() != -1) {
-
-            i = InsumoDAO.getInstance().getById((int) tabelaInsumo.getValueAt(tabelaInsumo.getSelectedRow(), 0));
-            textDescInsumo.setText(tabelaInsumo.getValueAt(tabelaInsumo.getSelectedRow(), 2).toString());
-            textID.setText(tabelaInsumo.getValueAt(tabelaInsumo.getSelectedRow(), 0).toString());
+        if (tabelaPedidoCompra.getSelectedRow() != -1) {         
+            pc = PedidoCompraDAO.getInstance().getById((int) tabelaPedidoCompra.getValueAt(tabelaPedidoCompra.getSelectedRow(), 0));
+            textDataEmicao.setText(tabelaPedidoCompra.getValueAt(tabelaPedidoCompra.getSelectedRow(), 3).toString());
+            textID.setText(tabelaPedidoCompra.getValueAt(tabelaPedidoCompra.getSelectedRow(), 0).toString());
         }
-    }//GEN-LAST:event_tabelaInsumoMouseClicked
+    }//GEN-LAST:event_tabelaPedidoCompraMouseClicked
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         // TODO add your handling code here:
@@ -208,12 +207,12 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
 
     private void btn_confirmar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmar_ActionPerformed
         // TODO add your handling code here:
-        if(tabelaInsumo.getSelectedRow() >=0){
-            i = InsumoDAO.getInstance().getById((int) tabelaInsumo.getValueAt(tabelaInsumo.getSelectedRow(), 0));
+        if(tabelaPedidoCompra.getSelectedRow() >=0){
+            pc = PedidoCompraDAO.getInstance().getById((int) tabelaPedidoCompra.getValueAt(tabelaPedidoCompra.getSelectedRow(), 0));
             setConfirm(true);
             dispose();
         }else {
-            JOptionPane.showConfirmDialog(null, "selecione o insumo", "erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showConfirmDialog(null, "selecione o pedidoCompra", "erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_confirmar_ActionPerformed
 
@@ -226,42 +225,44 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
         if (JOptionPane.showConfirmDialog(this, "Deseja realmente remover", "Confirmação",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
                 == JOptionPane.YES_OPTION) {
-            int id_ins = tabelaInsumo.getSelectedRow();
+            int id_ins = tabelaPedidoCompra.getSelectedRow();
             if (id_ins >= 0) {
-                i = InsumoDAO.getInstance().getById((int) tabelaInsumo.getValueAt(id_ins, 0));
-                System.out.println("id cliente :"+ i.getId_insumo());
-                int n = (int) i.getId_insumo();
+                pc = PedidoCompraDAO.getInstance().getById((int) tabelaPedidoCompra.getValueAt(id_ins, 0));
+                System.out.println("id pedido de compra :"+ pc.getId_pedido_compra());
+                int n =  pc.getId_pedido_compra();
                 System.out.println("id e --"+n);
-               //InsumoDAO.getInstance().removeById(n);
-               // InsumoDAO.getInstance().removeById(Integer.parseInt(textID.getText()));
-                InsumoDAO.getInstance().remove(i);
+               //PedidoCompraDAO.getInstance().removeById(n);
+               // PedidoCompraDAO.getInstance().removeById(Integer.parseInt(textID.getText()));
+                PedidoCompraDAO.getInstance().remove(pc);
                 setConfirm(true);
                 dispose();
             } else {
-                JOptionPane.showConfirmDialog(null, "selecione o cliente", "erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "selecione o pedido de compra", "erro", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
-    public void listarInsumo(){
-        List<Insumo> listaInsumo = new ArrayList<>();
-        listaInsumo = InsumoDAO.getInstance().findAll();
-        this.popularTabelaInsumo(listaInsumo);
+    public void listarPedidoCompra(){
+        List<PedidoCompra> listaPedidiCompra = new ArrayList<>();
+        listaPedidiCompra = PedidoCompraDAO.getInstance().findAll();
+        this.popularTabelaPedidoCompra(listaPedidiCompra);
     }
-    public void popularTabelaInsumo(List<Insumo> plistaInsumo){
+    public void popularTabelaPedidoCompra(List<PedidoCompra> plistaInsumo){
         DefaultTableModel modeloTabela = new DefaultTableModel();
-        this.tabelaInsumo.setModel(modeloTabela);
-        modeloTabela.addColumn("Id Insumo");
-        modeloTabela.addColumn("Codigo");
-        modeloTabela.addColumn("Descrição");
-        modeloTabela.addColumn("Unidade");
+        this.tabelaPedidoCompra.setModel(modeloTabela);
+        modeloTabela.addColumn("Id PedidoCompra");
+        modeloTabela.addColumn("Id Projeto");
+        modeloTabela.addColumn("Id Cliente");
+        modeloTabela.addColumn("DataEmicao");
+        modeloTabela.addColumn("ValorTotal");
 
         
-        for(Insumo insumo : plistaInsumo){
+        for(PedidoCompra pedidoCompra : plistaInsumo){
             modeloTabela.addRow( new Object[]{
-                insumo.getId_insumo(),
-                insumo.getCod_insumo(),
-                insumo.getDescricao_produto(),
-                insumo.getUnidade(),
+                pedidoCompra.getId_pedido_compra(),
+                pedidoCompra.getProjetos().getId_projeto(),
+                pedidoCompra.getPessoa().getId_pessoa(),
+                pedidoCompra.getDt_emicao(),
+                pedidoCompra.getValor_total()
 
             }
             
@@ -319,8 +320,8 @@ public class ConsultaPedidoCompra extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaInsumo;
-    private javax.swing.JTextField textDescInsumo;
+    private javax.swing.JTable tabelaPedidoCompra;
+    private javax.swing.JTextField textDataEmicao;
     private javax.swing.JTextField textID;
     // End of variables declaration//GEN-END:variables
 }

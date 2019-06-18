@@ -40,7 +40,7 @@ import org.hibernate.annotations.Parameter;
 public class PedidoCompra implements Serializable {
     @GeneratedValue(generator="optimized-sequence-pedidocompra")
     @Id
-    private Long id_pedido_compra;
+    private int id_pedido_compra;
     @Temporal(TemporalType.DATE)
     private Date dt_emicao;  
     @Column
@@ -72,11 +72,11 @@ public class PedidoCompra implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public Long getId_pedido_compra() {
+    public int getId_pedido_compra() {
         return id_pedido_compra;
     }
 
-    public void setId_pedido_compra(Long id_pedido_compra) {
+    public void setId_pedido_compra(int id_pedido_compra) {
         this.id_pedido_compra = id_pedido_compra;
     }
 

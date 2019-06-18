@@ -14,8 +14,12 @@ import Model.Cliente;
 import Model.Insumo;
 import Model.PedidoCompra;
 import Model.PedidoCompraInsumo;
+import Model.Pessoa;
 import Model.Projetos;
+import View.TelaBuscaClientes;
 import View.TelaBuscaProjetos;
+import View.formDialog.ConsultaPedidoCompra;
+import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -82,7 +86,7 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         textDt_emicao = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_buscaProj = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -99,6 +103,8 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
         btnPedidoCompra = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        btn_buscar_pedido = new javax.swing.JButton();
+        btn_alterar_ = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,11 +153,11 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
-        jButton2.setText("Listar Projeto");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscaProj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
+        btn_buscaProj.setText("Buscar Projeto");
+        btn_buscaProj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_buscaProjActionPerformed(evt);
             }
         });
 
@@ -165,6 +171,11 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
         jButton4.setText("Listar Cliente");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Insumo"));
 
@@ -283,7 +294,7 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btn_buscaProj)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -310,7 +321,7 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(textIdProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1)
-                            .addComponent(jButton2)
+                            .addComponent(btn_buscaProj)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -327,11 +338,25 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
                     .addComponent(jButton7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/housekeeping_32px.png"))); // NOI18N
         jButton9.setText("Limpar");
+
+        btn_buscar_pedido.setText("Listar Pedido");
+        btn_buscar_pedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscar_pedidoActionPerformed(evt);
+            }
+        });
+
+        btn_alterar_.setText("Alterar");
+        btn_alterar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alterar_ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,13 +371,17 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnCadastrar)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton9))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(textVlrTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(textVlrTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btn_alterar_)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_buscar_pedido)
+                                .addGap(40, 40, 40)
+                                .addComponent(btnCadastrar)
+                                .addGap(31, 31, 31)
+                                .addComponent(jButton9)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -360,19 +389,21 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textVlrTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
-                    .addComponent(btnCadastrar))
-                .addGap(60, 60, 60))
+                    .addComponent(btnCadastrar)
+                    .addComponent(btn_buscar_pedido)
+                    .addComponent(btn_alterar_))
+                .addGap(91, 91, 91))
         );
 
-        setSize(new java.awt.Dimension(860, 750));
+        setSize(new java.awt.Dimension(860, 799));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -428,16 +459,18 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
         compraInsumo = null;
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_buscaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaProjActionPerformed
         // TODO add your handling code here:
         TelaBuscaProjetos tlProj = new TelaBuscaProjetos();
         tlProj.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_buscaProjActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         TelaCadasroProjeto cp = new TelaCadasroProjeto();
         cp.setVisible(true);
+          
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -446,6 +479,39 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
         tlcli.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btn_buscar_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_pedidoActionPerformed
+        // TODO add your handling code here:
+        
+        buscarPedido();
+    }//GEN-LAST:event_btn_buscar_pedidoActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        TelaBuscaClientes buscaClientes = new TelaBuscaClientes();
+        buscaClientes.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btn_alterar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterar_ActionPerformed
+        // TODO add your handling code here:
+        c.setId_pessoa(Integer.parseInt(textCliente.getText()));
+        compra.setPessoa(c);
+        pj.setId_projeto(Integer.parseInt(textIdProjeto.getText()));
+        compra.setProjetos(pj);
+        compra.setDt_emicao(textDt_emicao.getDate());
+        PedidoCompraDAO.getInstance().merge(compra);
+    }//GEN-LAST:event_btn_alterar_ActionPerformed
+
+    public void buscarPedido(){
+        ConsultaPedidoCompra cpc = new ConsultaPedidoCompra(new Frame(), true);
+        cpc.setVisible(true);
+        if(cpc.isConfirm()){
+            compra = cpc.getPc();
+            textIdProjeto.setText(Integer.toString(compra.getProjetos().getId_projeto()));
+            textCliente.setText(Integer.toString(compra.getPessoa().getId_pessoa()));
+            textDt_emicao.setDate(compra.getDt_emicao());
+            
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -485,8 +551,10 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
     private javax.swing.JButton btnAddinsumo;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnPedidoCompra;
+    private javax.swing.JButton btn_alterar_;
+    private javax.swing.JButton btn_buscaProj;
+    private javax.swing.JButton btn_buscar_pedido;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
