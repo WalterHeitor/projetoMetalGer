@@ -29,27 +29,8 @@ public class telaCadastroClientes extends javax.swing.JFrame {
     public telaCadastroClientes() {
         initComponents();
     }
-    public void popularTabelaClientes(List<Cliente> plistaCliente ){
-                DefaultTableModel modeloTabela = new DefaultTableModel();
-                this.tabelaClientes.setModel(modeloTabela);
-                modeloTabela.addColumn("ID");
-                modeloTabela.addColumn("Nome");
-                modeloTabela.addColumn("CNPJ");
-                modeloTabela.addColumn("FANTASIA");
-                
-                for (Cliente cliente : plistaCliente){
-                    modeloTabela.addRow(
-                            new Object[]{
-                            cliente.getId_pessoa(),
-                            cliente.getNome(),
-                            cliente.getCnpj(),
-                            cliente.getFantasia()
-                            }
-                    );
-                }
-                
-                
-            }
+    Cliente c = new Cliente();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,8 +71,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         btnListar_ = new javax.swing.JButton();
         textId = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaClientes = new javax.swing.JTable();
+        btn_alterar_ = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -187,6 +167,13 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Id:");
 
+        btn_alterar_.setText("Alterar");
+        btn_alterar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alterar_ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -201,7 +188,9 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                         .addGap(63, 63, 63)
                         .addComponent(jButton2)
                         .addGap(29, 29, 29)
-                        .addComponent(btnCadastrar))
+                        .addComponent(btnCadastrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_alterar_))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +313,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,35 +326,15 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(btnCadastrar)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListar_))
+                    .addComponent(btnListar_)
+                    .addComponent(btn_alterar_))
                 .addGap(64, 64, 64))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 810, 600);
+        jPanel1.setBounds(0, 0, 810, 630);
 
-        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaClientesMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabelaClientes);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 640, 760, 170);
-
-        setSize(new java.awt.Dimension(921, 862));
+        setSize(new java.awt.Dimension(921, 738));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -376,7 +345,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
                 textCep.getText().trim().equals("")||textTelefoneCliente.getText().trim().equals("")){
                 JOptionPane.showMessageDialog(this, "Um ou mais Campos não foram inseridos!!!");
         }else{
-            Cliente c = new Cliente(textRazao_social.getText().trim(), textFantazia.getText().trim(), textCnpj.getText().trim(), textNomeCliente.getText().trim(), 1);
+            c = new Cliente(textRazao_social.getText().trim(), textFantazia.getText().trim(), textCnpj.getText().trim(), textNomeCliente.getText().trim(), 1);
             Enderecos e = new Enderecos(textLagardouro.getText().trim(), textCidade.getText().trim(), textEstado.getText().trim(), textCep.getText().trim(), c);
             //e.setPessoa(c);
             c.addEnderecos(e);
@@ -397,11 +366,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         limpar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    public void listarClientes(){
-        List<Cliente> listaCliente = new ArrayList();
-            listaCliente = ClienteDAO.getInstance().findAll();  
-            this.popularTabelaClientes(listaCliente);
-    }
+    
     private void btnListar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListar_ActionPerformed
         // TODO add your handling code here:
 //        listarClientes();
@@ -411,23 +376,25 @@ public class telaCadastroClientes extends javax.swing.JFrame {
         ConsultaCliente tlConsClien = new ConsultaCliente(new JFrame(), true);
         tlConsClien.setVisible(true);
         if(tlConsClien.isConfirm()){
-            Cliente c = tlConsClien.getCtl();
+            c = tlConsClien.getCtl();
             textId.setText(Integer.toString( c.getId_pessoa()));
             textNomeCliente.setText(c.getNome());
             textRazao_social.setText(c.getRazao_social());
             textCnpj.setText(c.getCnpj());
             textFantazia.setText(c.getFantasia());
-            
+            textTipo.setText(Integer.toString(c.getTipo()));          
         }
     }//GEN-LAST:event_btnListar_ActionPerformed
 
-    private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
+    private void btn_alterar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterar_ActionPerformed
         // TODO add your handling code here:
-        //CLIK DO MAUSE
-        if(tabelaClientes.getSelectedRow() != -1){
-            textId.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
-        }
-    }//GEN-LAST:event_tabelaClientesMouseClicked
+        c.setNome(textNomeCliente.getText());
+        c.setTipo(Integer.parseInt(textTipo.getText()));
+        c.setCnpj(textCnpj.getText());
+        c.setFantasia(textFantazia.getText());
+        c.setRazao_social(textRazao_social.getText());
+        ClienteDAO.getInstance().merge(c);
+    }//GEN-LAST:event_btn_alterar_ActionPerformed
 
     public void limpar (){
         textTipo.setText("");
@@ -479,6 +446,7 @@ public class telaCadastroClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnListar_;
+    private javax.swing.JButton btn_alterar_;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -497,8 +465,6 @@ public class telaCadastroClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaClientes;
     private javax.swing.JTextField textCep;
     private javax.swing.JTextField textCidade;
     private javax.swing.JTextField textCnpj;
