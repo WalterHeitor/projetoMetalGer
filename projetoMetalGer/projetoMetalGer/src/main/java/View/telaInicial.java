@@ -13,6 +13,7 @@ import View.Cadastro.TelaCadasroProjeto;
 import View.Cadastro.TelaCadastroOrdemServico;
 import View.Cadastro.TelaEmprestimoFerramenta;
 import View.Cadastro.TelaOrdemServicoFuncionario;
+import View.Cadastro.TelaPedidoCompra;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,6 +65,7 @@ public class telaInicial extends javax.swing.JFrame {
         MenuRelatorioOrdemServico_ = new javax.swing.JMenuItem();
         MenuRelatorioProjetoClientes = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        menu_pedido_compra = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,6 +182,15 @@ public class telaInicial extends javax.swing.JFrame {
         jMenuBar1.add(Relatorios);
 
         jMenu5.setText("Serviços");
+
+        menu_pedido_compra.setText("Pedido de Compra");
+        menu_pedido_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_pedido_compraActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menu_pedido_compra);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -362,6 +373,12 @@ public class telaInicial extends javax.swing.JFrame {
         new TelaOrdemServicoFuncionario().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void menu_pedido_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_pedido_compraActionPerformed
+        // TODO add your handling code here:
+        TelaPedidoCompra tpc = new TelaPedidoCompra();
+        tpc.setVisible(true);
+    }//GEN-LAST:event_menu_pedido_compraActionPerformed
+
     
     public void GerarRelatorioProjetoCliente()throws JRException{
         System.out.println("gerando relatorio ");
@@ -426,5 +443,6 @@ public class telaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem menu_pedido_compra;
     // End of variables declaration//GEN-END:variables
 }

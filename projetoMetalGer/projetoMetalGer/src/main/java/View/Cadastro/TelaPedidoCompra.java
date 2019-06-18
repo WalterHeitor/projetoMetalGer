@@ -141,6 +141,11 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/plus_32px.png"))); // NOI18N
         jButton1.setText("Novo Projeto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
         jButton2.setText("Listar Projeto");
@@ -152,6 +157,11 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/plus_32px.png"))); // NOI18N
         jButton3.setText("Novo Cliente");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/icos/google_web_search_32px.png"))); // NOI18N
         jButton4.setText("Listar Cliente");
@@ -362,7 +372,7 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
                 .addGap(60, 60, 60))
         );
 
-        setSize(new java.awt.Dimension(818, 750));
+        setSize(new java.awt.Dimension(860, 750));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -423,6 +433,18 @@ public class TelaPedidoCompra extends javax.swing.JFrame {
         TelaBuscaProjetos tlProj = new TelaBuscaProjetos();
         tlProj.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        TelaCadasroProjeto cp = new TelaCadasroProjeto();
+        cp.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        telaCadastroClientes tlcli = new telaCadastroClientes();
+        tlcli.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

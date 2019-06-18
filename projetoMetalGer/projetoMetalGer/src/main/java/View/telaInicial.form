@@ -126,6 +126,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Servi&#xe7;os"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menu_pedido_compra">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pedido de Compra"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_pedido_compraActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
