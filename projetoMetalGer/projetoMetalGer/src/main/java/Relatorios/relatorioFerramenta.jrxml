@@ -6,7 +6,7 @@
 	<queryString language="SQL">
 		<![CDATA[select *from ferramenta]]>
 	</queryString>
-	<field name="id_ferramenta" class="java.lang.Long"/>
+	<field name="id_ferramenta" class="java.lang.Integer"/>
 	<field name="descricao_ferr" class="java.lang.String"/>
 	<field name="patrimonio_ferr" class="java.lang.String"/>
 	<field name="status" class="java.lang.String"/>
